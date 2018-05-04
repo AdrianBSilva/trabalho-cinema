@@ -8,12 +8,12 @@ namespace TrabalhoSistemaCinema
 {
     class Sistema
     {
-        Cinema cinema = new Cinema();
+        EscolhaCliente escolhaCliente = new EscolhaCliente();
         Filme filme = new Filme();
         Alimentacao alimentacao = new Alimentacao();
         Funcionario funcionario = new Funcionario();
-        
-        
+
+
         public Sistema()
         {
             GerirMenu();
@@ -22,10 +22,10 @@ namespace TrabalhoSistemaCinema
         {
             Console.WriteLine(
                 @"
-1 - Cadastro do Cliente
-2 - Cadastro de Filmes
+1 - Cliente
+2 - Filmes
 3 - Alimentação
-4 - Cadastro do Funcionário
+4 - Funcionário
 9 - Sair");
         }
 
@@ -40,7 +40,7 @@ namespace TrabalhoSistemaCinema
                 switch (menuEscolha)
                 {
                     case 1:
-                        cinema.CadastroClientes();
+                        escolhaCliente.MenuCliente();
                         break;
                     case 2:
                         filme.CadastroFilme();

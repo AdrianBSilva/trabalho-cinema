@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrabalhoSistemaCinema
 {
-    class Cinema
+    class Cliente
     {
         // Todos os itens
         string[] nomeClientes = new string[100];
@@ -24,8 +24,6 @@ namespace TrabalhoSistemaCinema
 
         public void CadastroClientes()
         {
-
-
 
             Console.Clear();
             Console.WriteLine("Informe o nome: ");
@@ -88,8 +86,10 @@ namespace TrabalhoSistemaCinema
             atual++;
 
         }
-      
 
 
+
+
+        
     }
 }
