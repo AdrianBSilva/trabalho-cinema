@@ -12,29 +12,25 @@ namespace TrabalhoSistemaCinema
         double[] duracaoFilme = new double[100];
         int[] classificaoFilme = new int[100];
         string[] generoFilme = new string[100];
-         int atual = 0;
+        int atual = 0;
         int senha = 951753;
-        bool validarSenha = true;
+
         public void CadastroFilme()
         {
-            while (validarSenha == true)
+            Console.WriteLine("Acesso Restrito");
+            Console.Write("Senha: ");
+            int acesso = Convert.ToInt32(Console.ReadLine());
+            while (acesso != senha)
             {
-                try
-                {
 
-                    Console.WriteLine("Acesso Restrito");
-                    Console.Write("Senha: ");
-                    validarSenha = false;
-                    Console.Clear();
-                }
-                catch
-                {
-                    Console.Clear();
-                    Console.WriteLine("Senha incorreta digite novamente");
-                }
+                Console.Clear();
+                Console.WriteLine("Senha incorreta digite novamente");
+                Console.Write("Senha: ");
+                acesso = Convert.ToInt32(Console.ReadLine());
+
+
 
             }
-            int acesso = Convert.ToInt32(Console.ReadLine());
 
 
             Console.Clear();
