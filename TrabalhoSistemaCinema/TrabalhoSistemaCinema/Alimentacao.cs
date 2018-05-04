@@ -13,9 +13,9 @@ namespace TrabalhoSistemaCinema
 
         }
 
-        internal void CadastrarAlimentacao()
+        public void CadastrarAlimentacao()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

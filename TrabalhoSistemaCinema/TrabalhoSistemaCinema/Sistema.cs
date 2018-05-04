@@ -9,7 +9,7 @@ namespace TrabalhoSistemaCinema
     class Sistema
     {
         Cinema cinema = new Cinema();
-        CadastroFilme filme = new CadastroFilme();
+        CadastrarFilme filme = new CadastrarFilme();
         Alimentacao alimentacao = new Alimentacao();
         Funcionario funcionario = new Funcionario();
         public Sistema()
@@ -41,7 +41,7 @@ namespace TrabalhoSistemaCinema
                         cinema.CadastroClientes();
                         break;
                     case 2:
-                        filme.CadastroFilme();
+                        filme.CadastrarFilme();
                         break;
                     case 3:
                         alimentacao.CadastrarAlimentacao();
