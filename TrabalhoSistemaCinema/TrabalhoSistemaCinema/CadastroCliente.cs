@@ -13,10 +13,7 @@ namespace TrabalhoSistemaCinema
         int[] idadeClientes = new int[100];
         int[] carteiraEstudante = new int[100];
         double[] compraIngresso = new double[100];
-        string[] nomeFilme = new string[100];
-        double[] duracaoFilme = new double[100];
-        int[] classificaoFilme = new int[100];
-        string[] generoFilme = new string[100];
+        
         double precoIngresso = 12;
 
         double desconto = 6;
@@ -90,18 +87,7 @@ namespace TrabalhoSistemaCinema
             precoIngresso = 12;
 
         }
-        public void CadastroFilmes()
-        {
-
-        }
-        public void Alimentacao()
-        {
-
-        }
-        public void Funcionario()
-        {
-
-        }
+      
 
 
     }
