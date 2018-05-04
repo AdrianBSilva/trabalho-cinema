@@ -13,7 +13,7 @@ namespace TrabalhoSistemaCinema
         int[] idadeFuncionario = new int[100];
         double[] salarioFuncionario = new double[100];
         string[] funcaoFuncionario = new string[100];
-        bool validacaoIdadeFuncionario = true;
+        bool validacaoIdadeFuncionario = true, validacaoSalarioFuncionario = true;
         int atual = 0;
 
         public void CadastroFuncionario()
@@ -37,8 +37,30 @@ namespace TrabalhoSistemaCinema
 
                 }
             }
+            
+
+            while (validacaoSalarioFuncionario == true)
+            {
+                try
+                {
+                    Console.WriteLine("Informe o salário: ");
+                    readLineValue = Console.ReadLine();
+                    salarioFuncionario[atual] = Convert.ToDouble(readLineValue);
+                    Console.Clear();
+                    validacaoSalarioFuncionario = false;
+                }
+                catch (Exception)
+                {
+                    Console.Clear();
+                    Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico");
+                    Console.WriteLine("\n");
+
+                }
+            }
             Console.WriteLine("Informe o salário: ");
             salarioFuncionario[atual] = Convert.ToDouble(Console.ReadLine());
+            Console.Clear();
+
             Console.WriteLine("Informe a função: ");
             funcaoFuncionario[atual] = Console.ReadLine();
 
