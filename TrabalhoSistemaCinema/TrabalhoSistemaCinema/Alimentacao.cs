@@ -8,7 +8,7 @@ namespace TrabalhoSistemaCinema
 {
     class Alimentacao
     {
-        public Alimentacao()
+        public void  Alimentacao()
         {
 
         }

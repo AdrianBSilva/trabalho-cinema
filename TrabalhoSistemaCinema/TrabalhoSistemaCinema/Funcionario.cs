@@ -8,7 +8,7 @@ namespace TrabalhoSistemaCinema
 {
     class Funcionario
     {
-        public Funcionario()
+        public void Funcionario()
         {
 
         }
