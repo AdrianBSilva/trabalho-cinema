@@ -32,6 +32,7 @@ namespace TrabalhoSistemaCinema
             Console.WriteLine("Informe a idade: ");
             idadeClientes[atual] = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
+            atual++;
 
 
             if (idadeClientes[atual] < 18)
@@ -85,6 +86,101 @@ namespace TrabalhoSistemaCinema
             precoIngresso = 12;
             atual++;
 
+        }
+        public void BuscarCliente()
+        {
+            Console.Write("Digite o nome para a busca: ");
+            string nomeBuscado = Console.ReadLine().ToLower().Trim();
+            bool achou = false;
+            for (int i = 0; i < atual; i++)
+            {
+                if (nomeBuscado == nomeClientes[i])
+                {
+                    Console.WriteLine(nomeClientes[i]);
+                        
+                    achou = true;
+                    break;
+
+                }
+            }
+            if (!achou)
+            {
+                Console.WriteLine("\n");
+                Console.WriteLine("Nome não encontrado!");
+            }
+        }
+        public void ListarCliente()
+        {
+            Console.Clear();
+            Console.WriteLine("Lista de Clientes: ");
+            for (int i = 0; i < atual; i++)
+            {
+                Console.WriteLine(
+                    String.Format("\nNome: {0} \nIdade: {1} ",
+                    nomeClientes[i], idadeClientes[i]
+                    )
+                    );
+
+
+            }
+        }
+        public void ComprarIngresso()
+        {
+            Console.WriteLine("Informe a idade: ");
+            idadeClientes[atual] = Convert.ToInt32(Console.ReadLine());
+            Console.Clear();
+
+
+            if (idadeClientes[atual] < 18)
+            {
+                Console.WriteLine("Desconto por ser menor de 18");
+                Console.WriteLine("\n\n");
+                precoIngresso = precoIngresso - desconto;
+            }
+            if (idadeClientes[atual] > 60)
+            {
+                Console.WriteLine("Desconto por ser Idoso");
+                Console.WriteLine("\n\n");
+                precoIngresso = precoIngresso - desconto;
+            }
+
+            Console.WriteLine("Carteira de Estudante \n 1 - Sim \n 2 - Não");
+            carteiraEstudante[atual] = Convert.ToInt32(Console.ReadLine());
+            Console.Clear();
+
+            if ((carteiraEstudante[atual] == 1) && (idadeClientes[atual] > 18))
+            {
+                precoIngresso = precoIngresso - desconto;
+            }
+            else if (carteiraEstudante[atual] == 2)
+            {
+                Console.WriteLine("Sem desconto da carteira de estudante");
+                Console.WriteLine("\n");
+
+            }
+
+            Console.WriteLine("Informe o valor depositado: ");
+            compraIngresso[atual] = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("\n");
+            valorTotalIngresso = compraIngresso[atual] - precoIngresso;
+
+            while (valorTotalIngresso < 0)
+            {
+                Console.WriteLine("\n\n");
+                Console.WriteLine("O valor total a ser pago é: R$" + precoIngresso);
+                Console.WriteLine("\n");
+                Console.WriteLine("Informe o valor novamente: ");
+                compraIngresso[atual] = Convert.ToDouble(Console.ReadLine());
+                valorTotalIngresso = compraIngresso[atual] - precoIngresso;
+                Console.Clear();
+
+            }
+
+            Console.WriteLine("\n");
+            Console.WriteLine("O valor total de troco é: R$" + valorTotalIngresso);
+            Console.WriteLine("\n");
+            precoIngresso = 12;
+            atual++;
         }
 
 

@@ -47,64 +47,14 @@ namespace TrabalhoSistemaCinema
                         cliente.CadastroClientes();
                         break;
                     case 2:
-                        
+                        cliente.BuscarCliente();
                         break;
                     case 3:
-                        Console.Clear();
-                        Console.WriteLine("Lista de clientes: ");
-                        for (int i = 0; i < atual; i++)
-                        {
-                            Console.WriteLine(nomeClientes[i]);
-                        }
+                        cliente.ListarCliente();
                         break;
                     case 4:
-                        Console.WriteLine("Informe a cliente: ");
-                        idadeClientes[atual ] = Convert.ToInt32(Console.ReadLine());
-                        if (idadeClientes[atual] < 18)
-                        {
-                            Console.WriteLine("Desconto por ser menor de 18");
-                            Console.WriteLine("\n\n");
-                            precoIngresso = precoIngresso - desconto;
-                        }
-                        if (idadeClientes[atual] > 60)
-                        {
-                            Console.WriteLine("Desconto por ser Idoso");
-                            Console.WriteLine("\n\n");
-                            precoIngresso = precoIngresso - desconto;
-                        }
-
-                        Console.WriteLine("Carteira de Estudante \n 1 - Sim \n 2 - Não");
-                        carteiraEstudante[atual] = Convert.ToInt32(Console.ReadLine());
-                        Console.Clear();
-
-                        if ((carteiraEstudante[atual] == 1) && (idadeClientes[atual] > 18))
-                        {
-                            precoIngresso = precoIngresso - desconto;
-                        }
-                        else if (carteiraEstudante[atual] == 2)
-                        {
-                            Console.WriteLine("Sem desconto da carteira de estudante");
-                            Console.WriteLine("\n");
-
-                        }
-
-                        Console.WriteLine("Informe o valor depositado: ");
-                        compraIngresso[atual] = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine("\n");
-                        valorTotalIngresso = compraIngresso[atual] - precoIngresso;
-
-                        while (valorTotalIngresso < 0)
-                        {
-                            Console.WriteLine("\n\n");
-                            Console.WriteLine("O valor total a ser pago é: R$" + precoIngresso);
-                            Console.WriteLine("\n");
-                            Console.WriteLine("Informe o valor novamente: ");
-                            compraIngresso[atual] = Convert.ToDouble(Console.ReadLine());
-                            valorTotalIngresso = compraIngresso[atual] - precoIngresso;
-                            Console.Clear();
-                        }
-                        Menu();
-                        menuEscolha = Convert.ToInt32(Console.ReadLine());
+                        cliente.ComprarIngresso();
+                        
                             break;
                         
                 }

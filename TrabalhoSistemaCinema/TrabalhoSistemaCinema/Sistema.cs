@@ -8,7 +8,7 @@ namespace TrabalhoSistemaCinema
 {
     class Sistema
     {
-        Cinema cinema = new Cinema();
+        EscolhaCliente cinema = new EscolhaCliente();
         Filme filme = new Filme();
         Alimentacao alimentacao = new Alimentacao();
         Funcionario funcionario = new Funcionario();
