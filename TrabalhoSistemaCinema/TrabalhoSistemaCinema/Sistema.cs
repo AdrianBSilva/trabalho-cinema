@@ -49,7 +49,7 @@ namespace TrabalhoSistemaCinema
                         alimentacao.CadastrarAlimentacao();
                         break;
                     case 4:
-                        funcionario.Funcionario();
+                        funcionario.CadastroFuncionario();
                         break;
                 }
                 Menu();

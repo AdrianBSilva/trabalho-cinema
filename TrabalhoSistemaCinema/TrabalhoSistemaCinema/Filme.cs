@@ -13,7 +13,7 @@ namespace TrabalhoSistemaCinema
         int[] classificaoFilme = new int[100];
         string[] generoFilme = new string[100];
 
-        public void CadastrarFilme()
+        public void CadastroFilme()
         {
             
         }
