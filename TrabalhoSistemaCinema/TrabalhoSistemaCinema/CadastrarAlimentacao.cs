@@ -6,16 +6,13 @@ using System.Threading.Tasks;
 
 namespace TrabalhoSistemaCinema
 {
-    class Alimentacao
+    class CadastrarAlimentacao
     {
-        public void  Alimentacao()
-        {
+        
 
-        }
-
-        internal void CadastrarAlimentacao()
+        public void CadastrarAlimentacao()
         {
-            throw new NotImplementedException();
+           
         }
     }
 }

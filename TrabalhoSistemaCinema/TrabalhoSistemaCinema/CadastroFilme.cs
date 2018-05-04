@@ -12,9 +12,10 @@ namespace TrabalhoSistemaCinema
         double[] duracaoFilme = new double[100];
         int[] classificaoFilme = new int[100];
         string[] generoFilme = new string[100];
-        public void CadastroFilme()
-        {
 
+        public void CadastrarFilme()
+        {
+            
         }
     }
 }
