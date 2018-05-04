@@ -23,9 +23,9 @@ namespace TrabalhoSistemaCinema
             Console.WriteLine(
                 @"
 1 - Cadastro do Cliente
-2 - Filmes
+2 - Cadastro de Filmes
 3 - Alimentação
-4 - Funcionário
+4 - Cadastro do Funcionário
 9 - Sair");
         }
 

@@ -14,10 +14,26 @@ namespace TrabalhoSistemaCinema
         double[] salarioFuncionario = new double[100];
         string[] funcaoFuncionario = new string[100];
         bool validacaoIdadeFuncionario = true, validacaoSalarioFuncionario = true;
+        int senha = 951753;
         int atual = 0;
 
         public void CadastroFuncionario()
         {
+            Console.WriteLine("Acesso Restrito");
+            Console.Write("Senha: ");
+            int acesso = Convert.ToInt32(Console.ReadLine());
+            while (acesso != senha)
+            {
+
+                Console.Clear();
+                Console.WriteLine("Senha incorreta digite novamente");
+                Console.Write("Senha: ");
+                acesso = Convert.ToInt32(Console.ReadLine());
+                Console.Clear();
+
+
+
+            }
             Console.WriteLine("Informe o nome: ");
             nomeFuncionario[atual] = Console.ReadLine();
             Console.Clear();
@@ -63,7 +79,7 @@ namespace TrabalhoSistemaCinema
 
             Console.WriteLine("Informe a função: ");
             funcaoFuncionario[atual] = Console.ReadLine();
-
+            atual++;
         }
     }
 }

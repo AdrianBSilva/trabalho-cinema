@@ -85,6 +85,7 @@ namespace TrabalhoSistemaCinema
             Console.WriteLine("O valor total de troco é: R$" + valorTotalIngresso);
             Console.WriteLine("\n");
             precoIngresso = 12;
+            atual++;
 
         }
       
