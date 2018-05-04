@@ -8,9 +8,9 @@ namespace TrabalhoSistemaCinema
 {
     class Alimentacao
     {
+        
 
-
-        public void CadastrarAlimentacao()  
+        internal void CadastrarAlimentacao()
         {
            
         }

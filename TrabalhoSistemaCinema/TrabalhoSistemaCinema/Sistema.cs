@@ -43,13 +43,13 @@ namespace TrabalhoSistemaCinema
                         cinema.CadastroClientes();
                         break;
                     case 2:
-                        filme.CadastrarFilme();
+                        filme.CadastroFilme();
                         break;
                     case 3:
                         alimentacao.CadastrarAlimentacao();
                         break;
                     case 4:
-                        funcionario.CadastroFuncionario();
+                        funcionario.Funcionario();
                         break;
                 }
                 Menu();
