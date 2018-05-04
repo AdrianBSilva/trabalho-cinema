@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TrabalhoSistemaCinema
 {
-    class CadastrarAlimentacao
+    class Alimentacao
     {
-        
 
-        public void CadastrarAlimentacao()
+
+        public void CadastrarAlimentacao()  
         {
            
         }

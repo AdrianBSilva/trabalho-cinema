@@ -10,7 +10,7 @@ namespace TrabalhoSistemaCinema
     {
         Cinema cinema = new Cinema();
         CadastroFilme filme = new CadastroFilme();
-        CadastrarAlimentacao alimentacao = new CadastrarAlimentacao();
+        Alimentacao alimentacao = new Alimentacao();
         Funcionario funcionario = new Funcionario();
         
         

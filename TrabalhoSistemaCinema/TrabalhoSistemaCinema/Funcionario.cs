@@ -20,6 +20,7 @@ namespace TrabalhoSistemaCinema
         {
             Console.WriteLine("Informe o nome: ");
             nomeFuncionario[atual] = Console.ReadLine();
+            Console.Clear();
             while (validacaoIdadeFuncionario == true)
             {
                 try
@@ -27,6 +28,7 @@ namespace TrabalhoSistemaCinema
                     Console.WriteLine("Informe a idade: ");
                     readLineValue = Console.ReadLine();
                     idadeFuncionario[atual] = Convert.ToInt32(readLineValue);
+                    Console.Clear();
                     validacaoIdadeFuncionario = false;
                 }
                 catch (Exception)
