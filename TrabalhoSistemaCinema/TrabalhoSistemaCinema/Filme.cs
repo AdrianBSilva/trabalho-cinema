@@ -27,11 +27,7 @@ namespace TrabalhoSistemaCinema
                 Console.WriteLine("Senha incorreta digite novamente");
                 Console.Write("Senha: ");
                 acesso = Convert.ToInt32(Console.ReadLine());
-
-
-
             }
-
 
             Console.Clear();
             Console.Write("Informe o nome do filme: ");
@@ -42,6 +38,10 @@ namespace TrabalhoSistemaCinema
             classificaoFilme[atual] = Convert.ToInt32(Console.ReadLine());
             Console.Write("Informe o gênero do filme: ");
             generoFilme[atual] = Console.ReadLine();
+
         }
     }
 }
+
+
+
