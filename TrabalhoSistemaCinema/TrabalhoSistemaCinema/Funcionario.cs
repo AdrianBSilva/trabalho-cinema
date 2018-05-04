@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace TrabalhoSistemaCinema
 {
-    class Program
+    class Funcionario
     {
-        static void Main(string[] args)
+        public Funcionario()
         {
+
         }
     }
 }
