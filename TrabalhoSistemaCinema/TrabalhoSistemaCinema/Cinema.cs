@@ -12,8 +12,7 @@ namespace TrabalhoSistemaCinema
         string[] nomeClientes = new string[100];
         int[] idadeClientes = new int[100];
         int[] carteiraEstudante = new int[100];
-        double[] compraIngresso = new double[100];
-        bool validacaoDesconto = false;
+        double[] compraIngresso = new double[100];        
         string[] nomeFilme = new string[100];
         double[] duracaoFilme = new double[100];
         int[] classificaoFilme = new int[100];
@@ -34,11 +33,16 @@ namespace TrabalhoSistemaCinema
             idadeClientes[atual] = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
 
-            if (idadeClientes[atual] < 17)
+            if (idadeClientes[atual] < 17) 
             {
-                Console.WriteLine("Desconto de idade por ser menor de 18");
+                Console.WriteLine("Desconto por ser menor de 18");
+                Console.WriteLine("\n\n");                
+                precoIngresso = precoIngresso - desconto;
+            }
+            if (idadeClientes[atual] > 60)
+            {
+                Console.WriteLine("Desconto por ser Idoso" );
                 Console.WriteLine("\n\n");
-                validacaoDesconto = true;
                 precoIngresso = precoIngresso - desconto;
             }
 
