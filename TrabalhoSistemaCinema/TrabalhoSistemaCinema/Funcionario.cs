@@ -168,6 +168,22 @@ namespace TrabalhoSistemaCinema
 
             }
         }
+        //Ele vai localizar o maior nome apartir dos nomes
+        public string LocalizarMaiorNome()
+        {
+            string maiorNome = "";
+
+            for (int i = 0; i < atual; i++)
+            {
+                if (nomeFuncionario[i].Length > maiorNome.Length)                    
+                {
+                    maiorNome = nomeFuncionario[i];
+                }
+                
+
+            }
+            return maiorNome;
+        }
 
         public void ListarFuncionario()
         {
@@ -190,6 +206,7 @@ namespace TrabalhoSistemaCinema
             }
 
             Console.WriteLine("------------------------");
+            Console.WriteLine("O maior nome é: " + LocalizarMaiorNome());
             Console.WriteLine("\nDigite qualquer tecla para sair: ");
             string retornar = Console.ReadLine().Trim().ToLower();
         }

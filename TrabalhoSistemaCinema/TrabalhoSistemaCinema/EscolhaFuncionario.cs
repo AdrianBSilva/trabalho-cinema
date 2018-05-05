@@ -14,7 +14,7 @@ namespace TrabalhoSistemaCinema
         Funcionario funcionario = null;
 
         Sistema _sistema = null;
-
+        
         public EscolhaFuncionario(Sistema sistema)
         {
             _sistema = sistema;

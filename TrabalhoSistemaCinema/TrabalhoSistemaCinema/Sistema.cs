@@ -16,6 +16,12 @@ namespace TrabalhoSistemaCinema
         bool validacaoMenu = true;
         string readLineValue = "";
 
+        //Public Sistema faz com que "Menu" possa ser usado em outras classes como por exemplo "EscolhaFuncionario"
+        // assim você consegue voltar para o menu principal
+        //Repete o Sistema nas suas classes, se tiver dúvida copia como eu fiz
+        //Quando você for fazer bota o "This" ali entre parenteses
+        //Qualquer coisa da um debug e olha passo a passo como ta funcionando, se as  dúvidas persistirem ai me chama que eu te ajudo
+        //Tenta seguir meu padrão de como eu fiz, detalhe, fiquei até as 4 da manhã fazendo isso kkkkkkkkkkkkkkk lul 
         public Sistema()
         {
             cinema = new EscolhaCliente(this);
@@ -82,7 +88,7 @@ namespace TrabalhoSistemaCinema
                         break;
                 }
                 
-                Menu();
+                
                 validacaoMenu = true;
                 while (validacaoMenu == true)
                 {

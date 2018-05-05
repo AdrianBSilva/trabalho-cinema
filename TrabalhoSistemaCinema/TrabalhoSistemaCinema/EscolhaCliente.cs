@@ -11,9 +11,11 @@ namespace TrabalhoSistemaCinema
         int menuEscolha = 0;
         string readLineValue = "";
         bool validacaoMenu = true;
-
-        Cliente cliente = null;
         
+        Cliente cliente = null;
+        //Com o "Sistema _sistema = null"
+        //E "cliente = new Cliente(sistema)"
+        //Eu consigo utilizar a aba Menu(); para voltar ao menu principal
         Sistema _sistema = null;
         public EscolhaCliente(Sistema sistema)
         {

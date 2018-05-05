@@ -26,6 +26,7 @@ namespace TrabalhoSistemaCinema
         double valorTotalIngresso = 0;
         int atual = 0;
 
+        //utilizado para que você consiga utiliar "Menu();" para conseguir fazer isso, você vai ter que acrescentar nas duas classes que você criar para filme e alimentação.
         Sistema _sistema = null;
         public Cliente(Sistema sistema)
         {
@@ -34,7 +35,7 @@ namespace TrabalhoSistemaCinema
 
 
 
-
+        //Faz o cadastro
         public void CadastroClientes()
         {
             Console.Clear();
@@ -96,6 +97,7 @@ namespace TrabalhoSistemaCinema
             }
         }
         
+        //Faz a busca dos clientes
          public void BuscarCliente()
          {
             Console.Clear();
@@ -133,18 +135,37 @@ namespace TrabalhoSistemaCinema
                     {
                         Console.WriteLine("\n");
                         Console.WriteLine("Nome não encontrado!");
+                        Console.Write("Digite o nome para a busca(ou \"Sair\" para sair): ");
+                        nomeBuscado = Console.ReadLine().ToLower().Trim();
+                        Console.Clear();
                     }
 
 
-                Console.Write("Digite o nome para a busca(ou \"Sair\" para sair): ");
-                nomeBuscado = Console.ReadLine().ToLower().Trim();
+                
                       
 
                 }
                 
             
          }
+        //Locazia o nome apartir de nomeClientes
+        public string LocalizarMaiorNome()
+        {
+            string maiorNome = "";
 
+            for (int i = 0; i < atual; i++)
+            {
+                if (nomeClientes[i].Length > maiorNome.Length)
+                {
+                    maiorNome = nomeClientes[i];
+                }
+
+
+            }
+            return maiorNome;
+        }
+
+        //Faz a listagem dos clientes
         public void ListarCliente()
         {
             
@@ -155,7 +176,7 @@ namespace TrabalhoSistemaCinema
             for (int i = 0; i < atual; i++)
             {
                 Console.WriteLine(String.Format("Código: {0}\nNome: {1}\nIdade: {2}\n",
-                    i, 
+                    i + 1, 
                     nomeClientes[i], 
                     idadeClientes[i])
                     );
@@ -163,7 +184,8 @@ namespace TrabalhoSistemaCinema
             }
 
             Console.WriteLine("------------------------");
-                Console.WriteLine("\nDigite qualquer tecla para sair: ");
+            Console.WriteLine("O maior nome é: " + LocalizarMaiorNome());
+            Console.WriteLine("\nDigite qualquer tecla para sair: ");
                 string retornar = Console.ReadLine().Trim().ToLower();
                 
                 
@@ -172,6 +194,7 @@ namespace TrabalhoSistemaCinema
             
         }
 
+        //Compra dos Ingressos
         public void ComprarIngresso()
         {
             validacaoIdadeCliente = true;
