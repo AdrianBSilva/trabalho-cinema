@@ -96,15 +96,59 @@ namespace TrabalhoSistemaCinema
                 // atualiza o "atual" para um novo cadastro
             }
         }
-        
+
+        public void ExibirMaioresNomes()
+        {
+            string maiorNome = "";
+            int indiceNomes = 0;
+            string[] nomes = new string[atual];
+
+            for (int i = 0; i < atual; i++)
+            {
+                // adiciona repitidos
+                if (nomeClientes[i].Length == maiorNome.Length)
+                {
+                    nomes[indiceNomes++] = nomeClientes[i];
+
+                } // Adiciona o maior.
+                else if (nomeClientes[i].Length > maiorNome.Length)
+                {
+                    // Seleciona o maior nome.
+                    maiorNome = nomeClientes[i];
+
+                    // Começa a lista novamente...
+                    indiceNomes = 0;
+                    nomes = new string[atual];
+                    nomes[indiceNomes++] = maiorNome;
+
+                }
+            }
+
+            string nomesX = "";
+            for (int i = 0; i < indiceNomes; i++)
+            {
+                nomesX += (nomes[i] + ", ");
+            }
+
+
+            if (indiceNomes > 1)
+            {
+                Console.WriteLine("Os maiores nomes são: {0}", nomesX);
+            }
+            else
+            {
+                Console.WriteLine("O maior nome é: {0}", nomesX);
+            }
+        }
+
         //Faz a busca dos clientes
-         public void BuscarCliente()
+        public void BuscarCliente()
          {
             Console.Clear();
             
             
                 
-                Console.Write("Digite o nome para a busca(ou \"Sair\" para sair): ");
+                Console.WriteLine("Digite o nome para a busca(ou \"Sair\" para sair): ");
                 string nomeBuscado = Console.ReadLine().ToLower().Trim();
                 while (nomeBuscado != "sair")
                 {
@@ -184,7 +228,7 @@ namespace TrabalhoSistemaCinema
             }
 
             Console.WriteLine("------------------------");
-            Console.WriteLine("O maior nome é: " + LocalizarMaiorNome());
+            ExibirMaioresNomes();
             Console.WriteLine("\nDigite qualquer tecla para sair: ");
                 string retornar = Console.ReadLine().Trim().ToLower();
                 

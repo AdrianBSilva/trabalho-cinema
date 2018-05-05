@@ -34,7 +34,7 @@ namespace TrabalhoSistemaCinema
 1 - Cadastro do Funcionário
 2 - Busca do Funcionário
 3 - Lista de Funcionários
-4 - Salário do Funcionário 
+4 - Alteração do Funcionário 
 9 - Voltar");
         }
 
