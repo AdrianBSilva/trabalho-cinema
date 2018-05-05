@@ -11,12 +11,15 @@ namespace TrabalhoSistemaCinema
         public EscolhaCliente cinema = null;
         public Filme filme = null;
         public Alimentacao alimentacao = null;
-        public Funcionario funcionario = null;
+        public EscolhaFuncionario funcionario = null;
+        int menuEscolha = 0;
+        bool validacaoMenu = true;
+        string readLineValue = "";
 
         public Sistema()
         {
             cinema = new EscolhaCliente(this);
-            funcionario = new Funcionario();
+            funcionario = new EscolhaFuncionario(this);
             filme = new Filme();
             alimentacao = new Alimentacao();
 
@@ -38,8 +41,23 @@ namespace TrabalhoSistemaCinema
 
         public void GerirMenu()
         {
-            Menu();
-            int menuEscolha = Convert.ToInt32(Console.ReadLine());
+            validacaoMenu = true;
+            while (validacaoMenu == true)
+            {
+                try
+                {
+                    
+                    Menu();
+                    readLineValue = Console.ReadLine();
+                    menuEscolha = Convert.ToInt32(readLineValue);
+                    validacaoMenu = false;
+                }
+                catch (Exception)
+                {
+                    Console.Clear();
+                    Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico");
+                }
+            }
             Console.Clear();
 
             while (menuEscolha != 9)
@@ -60,12 +78,29 @@ namespace TrabalhoSistemaCinema
                         break;
                     case 4:
                         Console.Clear();
-                        funcionario.CadastroFuncionario();
+                        funcionario.MenuFuncionario(); 
                         break;
                 }
-
+                
                 Menu();
-                menuEscolha = Convert.ToInt32(Console.ReadLine());
+                validacaoMenu = true;
+                while (validacaoMenu == true)
+                {
+                    try
+                    {
+                        
+                        Menu();
+                        readLineValue = Console.ReadLine();
+                        menuEscolha = Convert.ToInt32(readLineValue);
+                        validacaoMenu = false;
+                    }
+                    catch (Exception)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico");
+                    }
+                }
+                Console.Clear();
             }
         }
     }

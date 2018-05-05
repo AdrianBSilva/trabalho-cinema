@@ -13,8 +13,10 @@ namespace TrabalhoSistemaCinema
         int[] idadeClientes = new int[100];
         int[] carteiraEstudante = new int[100];
         double[] compraIngresso = new double[100];
+        bool validacaoIdadeCliente = true, validacaoIngresso = true;
         string readLineValue = "";
-        bool validacaoIdade = true;
+        
+        
         
         
         double precoIngresso = 12;
@@ -38,6 +40,7 @@ namespace TrabalhoSistemaCinema
             Console.Clear();
 
             string sairTexto = " (ou \"sair\" para sair): ";
+            string idade = "";
 
             while (nomeClientes[atual] != "sair")
             {
@@ -53,34 +56,29 @@ namespace TrabalhoSistemaCinema
                     break;
                 }
 
-                int idadeNumero = -1;
-                string idade = "";
-                while (idadeNumero < 0)
+                int idadeNumero = 0;
+
+                while (idadeNumero == 0)
                 {
                     try
                     {
                         // Recebe a idade                
-                        Console.Write("Informe sua idade" + sairTexto);
+                        Console.Write("Informe sua idade: ");
                         idade = Console.ReadLine();
-                        
-
-                        // Sai do programa se for "sair"
-                        if (idade.Trim().ToLower() == "sair")
-                        {
-                            break;
-                        }
-
+                                              
                         idadeNumero = Convert.ToInt32(idade);
 
-                        if (idadeNumero < 0)
+                        if (idadeNumero == 0)
                         {
+                            Console.Clear();
                             Console.WriteLine("\nInforme uma idade válida! Você informou: \"{0}\"", idade);
                         }
 
                     }
+
                     catch (Exception)
                     {
-
+                        Console.Clear();
                         Console.WriteLine("\nInforme uma idade válida! Você informou: \"{0}\"", idade);
                     }
                 }
@@ -89,9 +87,12 @@ namespace TrabalhoSistemaCinema
                 nomeClientes[atual] = nome.ToLower().Trim();
                 idadeClientes[atual] = idadeNumero;
 
-                
-                // atualiza o "atual" para um novo cadastro
+                if(idadeNumero > 0)
+                {
                 atual++;
+
+                }
+                // atualiza o "atual" para um novo cadastro
             }
         }
         
@@ -100,8 +101,8 @@ namespace TrabalhoSistemaCinema
             Console.Clear();
             
             
-                Console.Write("Digite \"Sair\" para sair ");
-                Console.Write("Digite o nome para a busca: ");
+                
+                Console.Write("Digite o nome para a busca(ou \"Sair\" para sair): ");
                 string nomeBuscado = Console.ReadLine().ToLower().Trim();
                 while (nomeBuscado != "sair")
                 {
@@ -112,6 +113,7 @@ namespace TrabalhoSistemaCinema
 
                     for (int i = 0; i < atual; i++)
                     {
+
                         if (nomeBuscado == nomeClientes[i])
                         {
                             achou = true;
@@ -132,6 +134,12 @@ namespace TrabalhoSistemaCinema
                         Console.WriteLine("\n");
                         Console.WriteLine("Nome não encontrado!");
                     }
+
+
+                Console.Write("Digite o nome para a busca(ou \"Sair\" para sair): ");
+                nomeBuscado = Console.ReadLine().ToLower().Trim();
+                      
+
                 }
                 
             
@@ -150,7 +158,7 @@ namespace TrabalhoSistemaCinema
                     i, 
                     nomeClientes[i], 
                     idadeClientes[i])
-                );
+                    );
                 
             }
 
@@ -166,28 +174,58 @@ namespace TrabalhoSistemaCinema
 
         public void ComprarIngresso()
         {
-            Console.WriteLine("Informe a idade: ");
-            int idade = Convert.ToInt32(Console.ReadLine());
-            Console.Clear();
+            validacaoIdadeCliente = true;
+            while (validacaoIdadeCliente == true)
+            {
+                try
+                {
+                    Console.WriteLine("Informe a idade: ");
+                    readLineValue = Console.ReadLine();
+                    idadeClientes[atual] = Convert.ToInt32(readLineValue);
+                    Console.Clear();
+                    validacaoIdadeCliente = false;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico");
+
+                }
+            }
 
 
             if (idadeClientes[atual] < 18)
             {
-                Console.WriteLine("Desconto por ser menor de 18");
+                Console.WriteLine("Desconto por ser menor de 18(Descartado o desconto de Estudante)");
                 Console.WriteLine("\n\n");
                 precoIngresso = precoIngresso - desconto;
             }
 
             if (idadeClientes[atual] > 60)
             {
-                Console.WriteLine("Desconto por ser Idoso");
+                Console.WriteLine("Desconto por ser Idoso(Descartado o desconto de Estudante)");
                 Console.WriteLine("\n\n");
                 precoIngresso = precoIngresso - desconto;
             }
+            validacaoIngresso = true;
+            while (validacaoIngresso == true)
+            {
 
-            Console.WriteLine("Carteira de Estudante \n 1 - Sim \n 2 - Não");
-            carteiraEstudante[atual] = Convert.ToInt32(Console.ReadLine());
-            Console.Clear();
+
+                try
+                {
+                    Console.WriteLine("Carteira de Estudante \n 1 - Sim \n 2 - Não");
+                    carteiraEstudante[atual] = Convert.ToInt32(Console.ReadLine());
+                    
+                    validacaoIngresso = false;
+
+                }
+                catch (Exception)
+                {
+                    Console.Clear();
+                    
+                }
+            }
+            
 
             if ((carteiraEstudante[atual] == 1) && (idadeClientes[atual] > 18))
             {
@@ -200,11 +238,22 @@ namespace TrabalhoSistemaCinema
                 Console.WriteLine("\n");
 
             }
+            validacaoIngresso = true;
+            while(validacaoIngresso == true)
+            try
+            {
+                Console.WriteLine("Informe o valor depositado: ");
+                compraIngresso[atual] = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("\n");
+                    validacaoIngresso = false;
+                valorTotalIngresso = compraIngresso[atual] - precoIngresso;
+            }
+            catch(Exception)
+            {
+                    Console.Clear();
+                Console.WriteLine("Informe novamente!");
 
-            Console.WriteLine("Informe o valor depositado: ");
-            compraIngresso[atual] = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("\n");
-            valorTotalIngresso = compraIngresso[atual] - precoIngresso;
+            }
 
             while (valorTotalIngresso < 0)
             {
@@ -212,9 +261,22 @@ namespace TrabalhoSistemaCinema
                 
                 Console.WriteLine("\n");
                 Console.WriteLine("O valor total a ser pago é: R$" + precoIngresso);
-                Console.WriteLine("Informe o valor novamente: ");
-                compraIngresso[atual] = Convert.ToDouble(Console.ReadLine());
-                Console.Clear();
+                validacaoIngresso = true;
+                while (validacaoIngresso == true)
+                    try
+                    {
+                        Console.WriteLine("Informe o valor depositado: ");
+                        compraIngresso[atual] = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("\n");
+                        validacaoIngresso = false;
+                        valorTotalIngresso = compraIngresso[atual] - precoIngresso;
+                    }
+                    catch (Exception)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Informe novamente!");
+
+                    }
                 valorTotalIngresso = compraIngresso[atual] - precoIngresso;
                 
 
