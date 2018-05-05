@@ -9,13 +9,17 @@ namespace TrabalhoSistemaCinema
     class EscolhaCliente
     {
 
-        Cliente cliente = new Cliente();
-        int atual = 0;
-        double precoIngresso = 12;
+        Cliente cliente = null;
+        
+        Sistema _sistema = null;
+        public EscolhaCliente(Sistema sistema)
+        {
+            _sistema = sistema;
+            cliente = new Cliente(sistema);          
+        }
+        
 
-        double desconto = 6;
 
-        double valorTotalIngresso = 0;
 
 
         public void MenuCliente()
@@ -25,39 +29,47 @@ namespace TrabalhoSistemaCinema
 
         public void Menu()
         {
+            Console.Clear();
             Console.WriteLine(
                 @"
 1 - Cadastro do Cliente
 2 - Buscar Cliente
 3 - Listar Cliente
 4 - Comprar Ingresso 
-9 - Sair");
+9 - Voltar");
         }
 
         public void GerirMenuCliente()
         {
-            MenuCliente();
+            Menu();
             int menuEscolha = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
+
             while (menuEscolha != 9)
-            {
+            {                
                 switch (menuEscolha)
                 {
                     case 1:
-                        cliente.CadastroClientes();
+                        Console.Clear();
+                        cliente.CadastroClientes();                        
                         break;
                     case 2:
+                        Console.Clear();
                         cliente.BuscarCliente();
                         break;
                     case 3:
+                        Console.Clear();
                         cliente.ListarCliente();
                         break;
                     case 4:
-                        cliente.ComprarIngresso();
-                        
-                            break;
-                        
+                        Console.Clear();
+                        cliente.ComprarIngresso();                        
+                        break;
                 }
+
+                Menu();
+                menuEscolha = Convert.ToInt32(Console.ReadLine());
+                
             }
         }
     }

@@ -8,16 +8,22 @@ namespace TrabalhoSistemaCinema
 {
     class Sistema
     {
-        EscolhaCliente cinema = new EscolhaCliente();
-        Filme filme = new Filme();
-        Alimentacao alimentacao = new Alimentacao();
-        Funcionario funcionario = new Funcionario();
-        
-        
+        public EscolhaCliente cinema = null;
+        public Filme filme = null;
+        public Alimentacao alimentacao = null;
+        public Funcionario funcionario = null;
+
         public Sistema()
         {
+            cinema = new EscolhaCliente(this);
+            funcionario = new Funcionario();
+            filme = new Filme();
+            alimentacao = new Alimentacao();
+
             GerirMenu();
         }
+
+
         public void Menu()
         {
             Console.WriteLine(
@@ -35,23 +41,29 @@ namespace TrabalhoSistemaCinema
             Menu();
             int menuEscolha = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
+
             while (menuEscolha != 9)
             {
                 switch (menuEscolha)
                 {
                     case 1:
-                        escolhaCliente.MenuCliente();
+                        Console.Clear();
+                        cinema.MenuCliente();
                         break;
                     case 2:
+                        Console.Clear();
                         filme.CadastroFilme();
                         break;
                     case 3:
+                        Console.Clear();
                         alimentacao.CadastrarAlimentacao();
                         break;
                     case 4:
+                        Console.Clear();
                         funcionario.CadastroFuncionario();
                         break;
                 }
+
                 Menu();
                 menuEscolha = Convert.ToInt32(Console.ReadLine());
             }
