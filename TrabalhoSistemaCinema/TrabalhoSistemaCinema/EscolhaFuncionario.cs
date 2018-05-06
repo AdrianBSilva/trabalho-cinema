@@ -24,10 +24,11 @@ namespace TrabalhoSistemaCinema
         public void Menu()
         {
             Console.Clear();
-            Console.WriteLine("{0}\n{1}\n{2}\n{3}\n{4}",
-                "1 - Cadastro do Funcionário",
-                "2 - Busca do Funcionárioo",
-                "3 - Lista de Funcionários",
+            Console.WriteLine("{0}\n{1}\n{2}\n{3}\n{4}\n{5}",
+                "===================== FUNCIONÁRIO ===================",
+                "1 - Cadastrar",
+                "2 - Buscar",
+                "3 - Listar",
                 "4 - Alteração do Funcionário ",
                 "9 - Voltar"
             );

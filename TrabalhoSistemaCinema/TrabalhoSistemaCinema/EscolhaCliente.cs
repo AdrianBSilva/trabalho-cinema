@@ -23,11 +23,12 @@ namespace TrabalhoSistemaCinema
         /// </summary>
         public void Menu()
         {
-            Console.Clear();             
-            Console.WriteLine("{0}\n{1}\n{2}\n{3}\n{4}",
-                "1 - Cadastro do Cliente",
-                "2 - Buscar Cliente",
-                "3 - Listar Cliente",
+            Console.Clear();
+            Console.WriteLine("{0}\n{1}\n{2}\n{3}\n{4}\n{5}",
+                "===================== CLIENTE ===================",
+                "1 - Cadastrar",
+                "2 - Buscar ",
+                "3 - Listar",
                 "4 - Comprar Ingresso",
                 "9 - Voltar"
             );
