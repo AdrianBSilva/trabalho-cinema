@@ -8,33 +8,26 @@ namespace TrabalhoSistemaCinema
 {
     class Funcionario
     {
-        Sistema _sistema = null;
-        public Funcionario(Sistema sistema)
-        {
-            _sistema = sistema;
-        }
         string readLineValue = "";
+        int atual = 0, acesso = 0;
+        int senha = 951753;
+        bool validacaoIdadeFuncionario = true;
+        bool validacaoSalarioFuncionario = true;
+        bool validacaoSenha = true;
+        string nome = "";
+        string[] funcaoFuncionario = new string[100];
+        double[] salarioFuncionario = new double[100];
         string[] _nomeFuncionario = new string[100];
         int[] idadeFuncionario = new int[100];
-        double[] salarioFuncionario = new double[100];
-        string[] funcaoFuncionario = new string[100];
-        bool validacaoIdadeFuncionario = true, validacaoSalarioFuncionario = true, validacaoSenha = true;
-        int senha = 951753;
-        int atual = 0, acesso = 0;
-        string nome = "";
 
-
-
-        
-
-        
-        
-
+        /// <summary>
+        /// Cadastro do funcionário
+        /// </summary>
         public void CadastroFuncionario()
         {
-
             Console.WriteLine("Acesso Restrito");
             validacaoSenha = true;
+
             while (validacaoSenha == true)
             {
                 try
@@ -49,14 +42,13 @@ namespace TrabalhoSistemaCinema
                     Console.WriteLine("Senha Numérica! Informe novamente");
                 }
             }
+     
+            Console.Clear();
 
+            while (acesso != senha)
+            {
                 Console.Clear();
-                while (acesso != senha)
-                {
 
-                    Console.Clear();
-                    
-                    
                 try
                 {
                     Console.WriteLine("Senha incorreta digite novamente");
@@ -66,90 +58,78 @@ namespace TrabalhoSistemaCinema
                 catch (Exception)
                 {
                     Console.WriteLine("Valor incorreto, informe a senha novamente");
-
                 }
-                    
+            }
 
+            while (nome != "sair")
+            {
+                Console.WriteLine("Informe o nome(ou \"Sair\" para sair): ");
+                string nome = Console.ReadLine().ToLower().Trim();
 
-
-                }
-
-                while (nome != "sair")
+                if (nome == "sair")
                 {
-                    Console.WriteLine("Informe o nome(ou \"Sair\" para sair): ");
-                    string nome = Console.ReadLine().ToLower().Trim();
-                    if (nome == "sair")
-                    {
-                        break;
-                    }
-                    Console.Clear();
-
-                    validacaoIdadeFuncionario = true;
-                    while (validacaoIdadeFuncionario == true)
-                    {
-                        try
-                        {
-                            Console.WriteLine("Informe a idade: ");
-                            readLineValue = Console.ReadLine();
-                            idadeFuncionario[atual] = Convert.ToInt32(readLineValue);
-                            Console.Clear();
-                            validacaoIdadeFuncionario = false;
-                        }
-                        catch (Exception)
-                        {
-                            Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico");
-
-                        }
-                    }
-
-
-                    validacaoSalarioFuncionario = true;
-                    while (validacaoSalarioFuncionario == true)
-                    {
-                        try
-                        {
-                            Console.WriteLine("Informe o salário: ");
-                            readLineValue = Console.ReadLine();
-                            salarioFuncionario[atual] = Convert.ToDouble(readLineValue);
-                            Console.Clear();
-                            validacaoSalarioFuncionario = false;
-                        }
-                        catch (Exception)
-                        {
-                            Console.Clear();
-                            Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico");
-                            Console.WriteLine("\n");
-
-                        }
-                    }
-
-                    Console.WriteLine("Informe a função: ");
-                    funcaoFuncionario[atual] = Console.ReadLine();
-                    _nomeFuncionario[atual] = nome;
-
-                    atual++;
-
-
-
-
+                    break;
                 }
-            
+
+                Console.Clear();
+                validacaoIdadeFuncionario = true;
+
+                while (validacaoIdadeFuncionario == true)
+                {
+                    try
+                    {
+                        Console.WriteLine("Informe a idade: ");
+                        readLineValue = Console.ReadLine();
+                        idadeFuncionario[atual] = Convert.ToInt32(readLineValue);
+                        Console.Clear();
+                        validacaoIdadeFuncionario = false;
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico");
+                    }
+                }
+
+                validacaoSalarioFuncionario = true;
+
+                while (validacaoSalarioFuncionario == true)
+                {
+                    try
+                    {
+                        Console.WriteLine("Informe o salário: ");
+                        readLineValue = Console.ReadLine();
+                        salarioFuncionario[atual] = Convert.ToDouble(readLineValue);
+                        Console.Clear();
+                        validacaoSalarioFuncionario = false;
+                    }
+                    catch (Exception)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico");
+                        Console.WriteLine("\n");
+                    }
+                }
+
+                Console.WriteLine("Informe a função: ");
+                funcaoFuncionario[atual] = Console.ReadLine();
+                _nomeFuncionario[atual] = nome;
+                atual++;
+            }
+
         }
 
+        /// <summary>
+        /// Busca do funcionário
+        /// </summary>
         public void BuscarFuncionario()
         {
             Console.Clear();
-
-
-
             Console.Write("Digite o nome para a busca(ou \"Sair\" para sair): ");
             string nomeBuscado = Console.ReadLine().ToLower().Trim();
+
             while (nomeBuscado != "sair")
             {
-
-
                 bool achou = false;
-
 
                 for (int i = 0; i < atual; i++)
                 {
@@ -161,11 +141,9 @@ namespace TrabalhoSistemaCinema
                         Console.WriteLine("Nome: " + _nomeFuncionario[i]);
                         Console.WriteLine("Idade: " + idadeFuncionario[i]);
                         Console.WriteLine("\n");
-
                         Console.Write("Digite \"Sair\" para sair ");
                         Console.Write("Digite o nome para a busca: ");
                         nomeBuscado = Console.ReadLine().ToLower().Trim();
-
                     }
                 }
 
@@ -175,30 +153,14 @@ namespace TrabalhoSistemaCinema
                     Console.WriteLine("Nome não encontrado!");
                 }
 
-
                 Console.Write("Digite o nome para a busca(ou \"Sair\" para sair): ");
                 nomeBuscado = Console.ReadLine().ToLower().Trim();
-
-
             }
         }
 
-        ////Ele vai localizar o maior nome apartir dos nomes
-        //public string LocalizarMaiorNome()
-        //{
-        //    string maiorNome = "";
-
-        //    for (int i = 0; i < atual; i++)
-        //    {
-        //        if (_nomeFuncionario[i].Length > maiorNome.Length)                    
-        //        {
-        //            maiorNome = _nomeFuncionario[i];
-        //        }
-        //    }
-
-        //    return maiorNome;
-        //}
-
+        /// <summary>
+        /// Exibe o maior nome
+        /// </summary>
         public void ExibirMaioresNomes()
         {
             string maiorNome = "";
@@ -210,7 +172,7 @@ namespace TrabalhoSistemaCinema
                 // adiciona repitidos
                 if (_nomeFuncionario[i].Length == maiorNome.Length)
                 {
-                    nomes[indiceNomes++] = _nomeFuncionario[i];                                        
+                    nomes[indiceNomes++] = _nomeFuncionario[i];
 
                 } // Adiciona o maior.
                 else if (_nomeFuncionario[i].Length > maiorNome.Length)
@@ -229,7 +191,7 @@ namespace TrabalhoSistemaCinema
             string nomesX = "";
             for (int i = 0; i < indiceNomes; i++)
             {
-                nomesX += (nomes[i]+ ", ");
+                nomesX += (nomes[i] + ", ");
             }
 
 
@@ -243,7 +205,9 @@ namespace TrabalhoSistemaCinema
             }
         }
 
-
+        /// <summary>
+        /// Lista dos funcionários
+        /// </summary>
         public void ListarFuncionario()
         {
             Console.Clear();
@@ -271,13 +235,17 @@ namespace TrabalhoSistemaCinema
             string retornar = Console.ReadLine().Trim().ToLower();
         }
 
-        public void SalarioFuncionario()
+        /// <summary>
+        /// Atualização de funcionário
+        /// </summary>
+        public void AltualizarFuncionario()
         {
             Console.Clear();
             Console.WriteLine("Digite o nome do funcionário para a alteração: ");
             string nomePesquisado = Console.ReadLine().ToLower().Trim();
             Console.Clear();
             int posicao = -1;
+
             for (int i = 0; i < atual; i++)
             {
                 if (nomePesquisado == _nomeFuncionario[i].ToLower())
@@ -290,6 +258,7 @@ namespace TrabalhoSistemaCinema
                 Console.Write("Alterar Nome do Funcionário: ");
                 _nomeFuncionario[posicao] = Console.ReadLine().ToLower().Trim();
                 validacaoIdadeFuncionario = true;
+
                 while (validacaoIdadeFuncionario == true)
                 {
                     try
@@ -303,7 +272,7 @@ namespace TrabalhoSistemaCinema
                         Console.Clear();
                         Console.WriteLine("Informe a idade novamente!");
                     }
-                    
+
                 }
                 validacaoSalarioFuncionario = true;
                 while (validacaoSalarioFuncionario == true)
@@ -314,21 +283,19 @@ namespace TrabalhoSistemaCinema
                         salarioFuncionario[posicao] = Convert.ToDouble(Console.ReadLine());
                         validacaoSalarioFuncionario = false;
                     }
+
                     catch (Exception)
                     {
                         Console.Clear();
                         Console.WriteLine("Informe o salário novamente!");
                     }
-
                 }
-                
-                
             }
             else
             {
                 Console.WriteLine("Registro não encontrado");
-
             }
+
             for (int i = 0; i < atual; i++)
             {
                 Console.WriteLine("Funcionário: {0}\nIdade: {1}\nSalário: {2}",

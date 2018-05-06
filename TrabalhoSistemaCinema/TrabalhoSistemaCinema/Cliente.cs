@@ -9,34 +9,21 @@ namespace TrabalhoSistemaCinema
     class Cliente
     {
         // Todos os itens
-        string[] nomeClientes = new string[100];
-        int[] idadeClientes = new int[100];
-        int[] carteiraEstudante = new int[100];
-        double[] compraIngresso = new double[100];
-        bool validacaoIdadeCliente = true, validacaoIngresso = true;
-        string readLineValue = "";
-        int idade = 0;
-        
-        
-        
-        
-        double precoIngresso = 12;
-
-        double desconto = 6;
-
-        double valorTotalIngresso = 0;
+        string _readLineValue = "";
+        bool _validacaoIdadeCliente = true, validacaoIngresso = true;
+        int _idade = 0;                                
         int atual = 0;
-
-        //utilizado para que você consiga utiliar "Menu();" para conseguir fazer isso, você vai ter que acrescentar nas duas classes que você criar para filme e alimentação.
-        Sistema _sistema = null;
-        public Cliente(Sistema sistema)
-        {
-            _sistema = sistema;
-        }
-
-
-
-        //Faz o cadastro
+        double precoIngresso = 12;
+        double desconto = 6;
+        double valorTotalIngresso = 0;
+        double[] _compraIngresso = new double[100];
+        int[] _carteiraEstudante = new int[100];
+        int[] _idadeClientes = new int[100];
+        string[] _nomeClientes = new string[100];
+                      
+        /// <summary>
+        /// Cadastro de Clientes
+        /// </summary>
         public void CadastroClientes()
         {
             Console.Clear();
@@ -44,7 +31,7 @@ namespace TrabalhoSistemaCinema
             string sairTexto = " (ou \"sair\" para sair): ";
             string idade = "";
 
-            while (nomeClientes[atual] != "sair")
+            while (_nomeClientes[atual] != "sair")
             {
                 Console.Clear();
 
@@ -86,8 +73,8 @@ namespace TrabalhoSistemaCinema
                 }
                 
                 // Guarda o "nome" e a "idade" se estiver ok.
-                nomeClientes[atual] = nome.ToLower().Trim();
-                idadeClientes[atual] = idadeNumero;
+                _nomeClientes[atual] = nome.ToLower().Trim();
+                _idadeClientes[atual] = idadeNumero;
 
                 if(idadeNumero > 0)
                 {
@@ -109,15 +96,15 @@ namespace TrabalhoSistemaCinema
             {
                 
                 // adiciona repitidos
-                if (nomeClientes[i].Length == maiorNome.Length)
+                if (_nomeClientes[i].Length == maiorNome.Length)
                 {
-                    nomes[indiceNomes++] = nomeClientes[i];
+                    nomes[indiceNomes++] = _nomeClientes[i];
 
                 } // Adiciona o maior.
-                else if (nomeClientes[i].Length > maiorNome.Length)
+                else if (_nomeClientes[i].Length > maiorNome.Length)
                 {
                     // Seleciona o maior nome.
-                    maiorNome = nomeClientes[i];
+                    maiorNome = _nomeClientes[i];
 
                     // Começa a lista novamente...
                     indiceNomes = 0;
@@ -144,31 +131,29 @@ namespace TrabalhoSistemaCinema
             }
         }
 
-        //Faz a busca dos clientes
+        /// <summary>
+        /// Busca de Clientes
+        /// </summary>
         public void BuscarCliente()
          {
             Console.Clear();
-            
-            
-                
+                                        
                 Console.WriteLine("Digite o nome para a busca(ou \"Sair\" para sair): ");
                 string nomeBuscado = Console.ReadLine().ToLower().Trim();
+
                 while (nomeBuscado != "sair")
                 {
-
-
                     bool achou = false;
-
 
                     for (int i = 0; i < atual; i++)
                     {
 
-                        if (nomeBuscado == nomeClientes[i])
+                        if (nomeBuscado == _nomeClientes[i])
                         {
                             achou = true;
                             Console.Clear();
-                            Console.WriteLine("Nome: " + nomeClientes[i]);
-                            Console.WriteLine("Idade: " + idadeClientes[i]);
+                            Console.WriteLine("Nome: " + _nomeClientes[i]);
+                            Console.WriteLine("Idade: " + _idadeClientes[i]);
                             Console.WriteLine("\n");
 
                             Console.Write("Digite \"Sair\" para sair ");
@@ -186,24 +171,23 @@ namespace TrabalhoSistemaCinema
                         nomeBuscado = Console.ReadLine().ToLower().Trim();
                         Console.Clear();
                     }
-
-
-                
-                      
-
+                                      
                 }                
             
          }
-        //Locazia o nome apartir de nomeClientes
+        /// <summary>
+        /// Localiza o Maior Nome
+        /// </summary>
+        /// <returns></returns>
         public string LocalizarMaiorNome()
         {
             string maiorNome = "";
 
             for (int i = 0; i < atual; i++)
             {
-                if (nomeClientes[i].Length > maiorNome.Length)
+                if (_nomeClientes[i].Length > maiorNome.Length)
                 {
-                    maiorNome = nomeClientes[i];
+                    maiorNome = _nomeClientes[i];
                 }
 
 
@@ -211,7 +195,9 @@ namespace TrabalhoSistemaCinema
             return maiorNome;
         }
 
-        //Faz a listagem dos clientes
+        /// <summary>
+        /// Lista de Clientes
+        /// </summary>
         public void ListarCliente()
         {
             if (atual == 0)
@@ -231,8 +217,8 @@ namespace TrabalhoSistemaCinema
                 {
                     Console.WriteLine(String.Format("Código: {0}\nNome: {1}\nIdade: {2}\n",
                         i + 1, 
-                        nomeClientes[i], 
-                        idadeClientes[i])
+                        _nomeClientes[i], 
+                        _idadeClientes[i])
                         );
                 
                 }
@@ -244,38 +230,40 @@ namespace TrabalhoSistemaCinema
             }                                            
         }
 
-        //Compra dos Ingressos
+        /// <summary>
+        /// Compra de Ingressos
+        /// </summary>
         public void ComprarIngresso()
         {
-            validacaoIdadeCliente = true;
-            while (validacaoIdadeCliente == true)
+            _validacaoIdadeCliente = true;
+            while (_validacaoIdadeCliente == true)
             {
                 try
                 {
                     Console.WriteLine("Informe a idade: ");
-                    readLineValue = Console.ReadLine();
-                    idade = Convert.ToInt32(readLineValue);
+                    _readLineValue = Console.ReadLine();
+                    _idade = Convert.ToInt32(_readLineValue);
                     Console.Clear();
-                    validacaoIdadeCliente = false;
+                    _validacaoIdadeCliente = false;
                 }
                 catch (Exception)
                 {
                     Console.Clear();
-                    Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico\nInforme Novamente");
+                    Console.WriteLine("O valor \"" + _readLineValue + "\" não é numérico\nInforme Novamente");
 
 
                 }
             }
 
 
-            if (idade < 18)
+            if (_idade < 18)
             {
                 Console.WriteLine("Desconto por ser menor de 18(Descartado o desconto de Estudante)");
                 Console.WriteLine("\n\n");
                 precoIngresso = precoIngresso - desconto;
             }
 
-            if (idade > 60)
+            if (_idade > 60)
             {
                 Console.WriteLine("Desconto por ser Idoso(Descartado o desconto de Estudante)");
                 Console.WriteLine("\n\n");
@@ -289,8 +277,8 @@ namespace TrabalhoSistemaCinema
                 try
                 {
                     Console.WriteLine("Carteira de Estudante \n 1 - Sim \n 2 - Não");
-                    readLineValue = Console.ReadLine();
-                    carteiraEstudante[atual] = Convert.ToInt32(readLineValue);
+                    _readLineValue = Console.ReadLine();
+                    _carteiraEstudante[atual] = Convert.ToInt32(_readLineValue);
                     Console.Clear();
                     
                     validacaoIngresso = false;
@@ -299,24 +287,24 @@ namespace TrabalhoSistemaCinema
                 catch (Exception)
                 {
                     Console.Clear();
-                    Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico\nInforme Novamente");
+                    Console.WriteLine("O valor \"" + _readLineValue + "\" não é numérico\nInforme Novamente");
 
                 }
             }
             
 
-            if ((carteiraEstudante[atual] == 1) && (idadeClientes[atual] > 18))
+            if ((_carteiraEstudante[atual] == 1) && (_idadeClientes[atual] > 18))
             {
                 precoIngresso = precoIngresso - desconto;
             }
 
-            else if (carteiraEstudante[atual] == 2)
+            else if (_carteiraEstudante[atual] == 2)
             {
                 Console.WriteLine("Sem desconto da carteira de estudante");
                 Console.WriteLine("\n");
 
             }
-            if ((carteiraEstudante[atual] == 1) && (idadeClientes[atual] > 60))
+            if ((_carteiraEstudante[atual] == 1) && (_idadeClientes[atual] > 60))
             {
                 precoIngresso = 6;
             }
@@ -329,16 +317,16 @@ namespace TrabalhoSistemaCinema
                 Console.WriteLine("O valor total a ser pago é: R$" + precoIngresso);
                 Console.WriteLine("\n");
                 Console.WriteLine("Valor para depositar o pagamento: ");
-                readLineValue = Console.ReadLine();
+                _readLineValue = Console.ReadLine();
                 Console.Clear();
-                compraIngresso[atual] = Convert.ToDouble(readLineValue);                
+                _compraIngresso[atual] = Convert.ToDouble(_readLineValue);                
                 validacaoIngresso = false;
-                valorTotalIngresso = compraIngresso[atual] - precoIngresso;
+                valorTotalIngresso = _compraIngresso[atual] - precoIngresso;
             }
             catch(Exception)
             {
                     Console.Clear();
-                    Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico\nInforme Novamente");
+                    Console.WriteLine("O valor \"" + _readLineValue + "\" não é numérico\nInforme Novamente");
                     Console.WriteLine("\n");
                     
 
@@ -356,20 +344,20 @@ namespace TrabalhoSistemaCinema
                         Console.WriteLine("O valor total a ser pago é: R$" + precoIngresso);
                         Console.WriteLine("\n");
                         Console.WriteLine("Valor para Depositar o pagando: ");
-                        readLineValue = Console.ReadLine();
+                        _readLineValue = Console.ReadLine();
                         Console.Clear();
-                        compraIngresso[atual] = Convert.ToDouble(readLineValue);
+                        _compraIngresso[atual] = Convert.ToDouble(_readLineValue);
                         Console.WriteLine("\n");
                         validacaoIngresso = false;
-                        valorTotalIngresso = compraIngresso[atual] - precoIngresso;
+                        valorTotalIngresso = _compraIngresso[atual] - precoIngresso;
                     }
                     catch (Exception)
                     {
                         Console.Clear();
-                        Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico\nInforme Novamente");
+                        Console.WriteLine("O valor \"" + _readLineValue + "\" não é numérico\nInforme Novamente");
                         Console.WriteLine("\n");
                     }
-                    valorTotalIngresso = compraIngresso[atual] - precoIngresso;
+                    valorTotalIngresso = _compraIngresso[atual] - precoIngresso;
                 }
                 
 

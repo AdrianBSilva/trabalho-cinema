@@ -11,63 +11,51 @@ namespace TrabalhoSistemaCinema
         int menuEscolha = 0;        
         bool validacaoMenu = true;
         
-        Cliente cliente = null;
-        //Com o "Sistema _sistema = null"
-        //E "cliente = new Cliente(sistema)"
-        //Eu consigo utilizar a aba Menu(); para voltar ao menu principal
-        Sistema _sistema = null;
-        public EscolhaCliente(Sistema sistema)
-        {
-            _sistema = sistema;
-            cliente = new Cliente(sistema);          
-        }
+        Cliente cliente = new Cliente();        
         
-
-
-
-
         public void MenuCliente()
         {
             GerirMenuCliente();
         }
 
+        /// <summary>
+        /// Exibe o menu do cliente
+        /// </summary>
         public void Menu()
         {
-            Console.Clear();
-            Console.WriteLine(
-                @"
-1 - Cadastro do Cliente
-2 - Buscar Cliente
-3 - Listar Cliente
-4 - Comprar Ingresso 
-9 - Voltar");
+            Console.Clear();             
+            Console.WriteLine("{0}\n{1}\n{2}\n{3}\n{4}",
+                "1 - Cadastro do Cliente",
+                "2 - Buscar Cliente",
+                "3 - Listar Cliente",
+                "4 - Comprar Ingresso",
+                "9 - Voltar"
+            );
         }
 
+        /// <summary>
+        /// Gera o menu do cliente
+        /// </summary>
         public void GerirMenuCliente()
-        {
-            
+        {            
             validacaoMenu = true;
             while (validacaoMenu == true)
             {
                 try
                 {
-
                     Menu();
-
                     menuEscolha = Convert.ToInt32(Console.ReadLine());                    
                     validacaoMenu = false;
                 }
                 catch (Exception)
                 {
-                    Console.Clear();
-                    
+                    Console.Clear();                    
                 }
             }
             Console.Clear();
 
             while (menuEscolha != 9)
-            {
-                
+            {                
                 switch (menuEscolha)
                 {
                     case 1:
@@ -81,12 +69,12 @@ namespace TrabalhoSistemaCinema
                         break;
                     case 4:
                         cliente.ComprarIngresso();                        
-                        break;                   
-                        
+                        break;                                           
                 }
 
                 Menu();
                 validacaoMenu = true;
+
                 while (validacaoMenu == true)
                 {
                     try
