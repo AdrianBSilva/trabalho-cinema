@@ -218,7 +218,7 @@ namespace TrabalhoSistemaCinema
             }
             else
             {
-                Console.WriteLine("Lista de Clientes: ");
+                Console.WriteLine("Lista de Clientes");
 
                 Console.WriteLine("-------------------------");
 
@@ -249,7 +249,7 @@ namespace TrabalhoSistemaCinema
             {
                 try
                 {
-                    Console.WriteLine("Informe a idade: ");
+                    Console.Write("Informe a idade: ");
                     _readLineValue = Console.ReadLine();
                     _idade = Convert.ToInt32(_readLineValue);
                     Console.Clear();
@@ -325,7 +325,7 @@ namespace TrabalhoSistemaCinema
             {
                 Console.WriteLine("O valor total a ser pago é: R$" + precoIngresso);
                 Console.WriteLine("\n");
-                Console.WriteLine("Valor para depositar o pagamento: ");
+                Console.Write("Valor para depositar o pagamento: ");
                 _readLineValue = Console.ReadLine();
                 Console.Clear();
                 _compraIngresso[atual] = Convert.ToDouble(_readLineValue);                
@@ -352,7 +352,7 @@ namespace TrabalhoSistemaCinema
                     {
                         Console.WriteLine("O valor total a ser pago é: R$" + precoIngresso);
                         Console.WriteLine("\n");
-                        Console.WriteLine("Valor para Depositar o pagando: ");
+                        Console.Write("Valor para Depositar o pagando: ");
                         _readLineValue = Console.ReadLine();
                         Console.Clear();
                         _compraIngresso[atual] = Convert.ToDouble(_readLineValue);
