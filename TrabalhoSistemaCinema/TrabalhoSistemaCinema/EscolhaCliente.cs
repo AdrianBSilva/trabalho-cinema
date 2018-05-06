@@ -8,8 +8,7 @@ namespace TrabalhoSistemaCinema
 {
     class EscolhaCliente
     {
-        int menuEscolha = 0;
-        string readLineValue = "";
+        int menuEscolha = 0;        
         bool validacaoMenu = true;
         
         Cliente cliente = null;
@@ -46,7 +45,7 @@ namespace TrabalhoSistemaCinema
 
         public void GerirMenuCliente()
         {
-            Menu();
+            
             validacaoMenu = true;
             while (validacaoMenu == true)
             {
@@ -54,14 +53,14 @@ namespace TrabalhoSistemaCinema
                 {
 
                     Menu();
-                    readLineValue = Console.ReadLine();
-                    menuEscolha = Convert.ToInt32(readLineValue);                    
+
+                    menuEscolha = Convert.ToInt32(Console.ReadLine());                    
                     validacaoMenu = false;
                 }
                 catch (Exception)
                 {
                     Console.Clear();
-                    Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico\nInforme Novamente");
+                    
                 }
             }
             Console.Clear();
@@ -94,14 +93,14 @@ namespace TrabalhoSistemaCinema
                     {
 
                         Menu();
-                        readLineValue = Console.ReadLine();
-                        menuEscolha = Convert.ToInt32(readLineValue);
+
+                        menuEscolha = Convert.ToInt32(Console.ReadLine());
                         validacaoMenu = false;
                     }
                     catch (Exception)
                     {
                         Console.Clear();
-                        Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico\nInforme Novamente");
+                        
                     }
                 }
                 Console.Clear();

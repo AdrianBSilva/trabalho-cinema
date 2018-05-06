@@ -8,7 +8,7 @@ namespace TrabalhoSistemaCinema
 {
     class Sistema
     {
-        public EscolhaCliente cinema = null;
+        public EscolhaCliente cliente = null;
         public Filme filme = null;
         public Alimentacao alimentacao = null;
         public EscolhaFuncionario funcionario = null;
@@ -24,7 +24,7 @@ namespace TrabalhoSistemaCinema
         //Tenta seguir meu padrão de como eu fiz, detalhe, fiquei até as 4 da manhã fazendo isso kkkkkkkkkkkkkkk lul 
         public Sistema()
         {
-            cinema = new EscolhaCliente(this);
+            cliente = new EscolhaCliente(this);
             funcionario = new EscolhaFuncionario(this);
             filme = new Filme();
             alimentacao = new Alimentacao();
@@ -54,14 +54,14 @@ namespace TrabalhoSistemaCinema
                 {
                     
                     Menu();
-                    readLineValue = Console.ReadLine();
-                    menuEscolha = Convert.ToInt32(readLineValue);
+                    
+                    menuEscolha = Convert.ToInt32(Console.ReadLine());
                     validacaoMenu = false;
                 }
                 catch (Exception)
                 {
                     Console.Clear();
-                    Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico\nInforme Novamente");
+                    
                 }
             }
             Console.Clear();
@@ -72,7 +72,7 @@ namespace TrabalhoSistemaCinema
                 {
                     case 1:
                         Console.Clear();
-                        cinema.MenuCliente();
+                        cliente.MenuCliente();
                         break;
                     case 2:
                         Console.Clear();

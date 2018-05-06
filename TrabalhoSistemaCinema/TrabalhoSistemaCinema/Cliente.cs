@@ -15,6 +15,7 @@ namespace TrabalhoSistemaCinema
         double[] compraIngresso = new double[100];
         bool validacaoIdadeCliente = true, validacaoIngresso = true;
         string readLineValue = "";
+        int idade = 0;
         
         
         
@@ -248,7 +249,7 @@ namespace TrabalhoSistemaCinema
                 {
                     Console.WriteLine("Informe a idade: ");
                     readLineValue = Console.ReadLine();
-                    idadeClientes[atual] = Convert.ToInt32(readLineValue);
+                    idade = Convert.ToInt32(readLineValue);
                     Console.Clear();
                     validacaoIdadeCliente = false;
                 }
@@ -262,14 +263,14 @@ namespace TrabalhoSistemaCinema
             }
 
 
-            if (idadeClientes[atual] < 18)
+            if (idade < 18)
             {
                 Console.WriteLine("Desconto por ser menor de 18(Descartado o desconto de Estudante)");
                 Console.WriteLine("\n\n");
                 precoIngresso = precoIngresso - desconto;
             }
 
-            if (idadeClientes[atual] > 60)
+            if (idade > 60)
             {
                 Console.WriteLine("Desconto por ser Idoso(Descartado o desconto de Estudante)");
                 Console.WriteLine("\n\n");
@@ -283,7 +284,9 @@ namespace TrabalhoSistemaCinema
                 try
                 {
                     Console.WriteLine("Carteira de Estudante \n 1 - Sim \n 2 - Não");
-                    carteiraEstudante[atual] = Convert.ToInt32(Console.ReadLine());
+                    readLineValue = Console.ReadLine();
+                    carteiraEstudante[atual] = Convert.ToInt32(readLineValue);
+                    Console.Clear();
                     
                     validacaoIngresso = false;
 
@@ -291,7 +294,8 @@ namespace TrabalhoSistemaCinema
                 catch (Exception)
                 {
                     Console.Clear();
-                    
+                    Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico\nInforme Novamente");
+
                 }
             }
             
@@ -307,15 +311,23 @@ namespace TrabalhoSistemaCinema
                 Console.WriteLine("\n");
 
             }
+            if ((carteiraEstudante[atual] == 1) && (idadeClientes[atual] > 60))
+            {
+                precoIngresso = 6;
+            }
+
+
             validacaoIngresso = true;
             while(validacaoIngresso == true)
             try
             {
-                Console.WriteLine("Informe o valor depositado: ");
-                    readLineValue = Console.ReadLine();
-                compraIngresso[atual] = Convert.ToDouble(readLineValue);
+                Console.WriteLine("O valor total a ser pago é: R$" + precoIngresso);
                 Console.WriteLine("\n");
-                    validacaoIngresso = false;
+                Console.WriteLine("Valor para depositar o pagamento: ");
+                readLineValue = Console.ReadLine();
+                Console.Clear();
+                compraIngresso[atual] = Convert.ToDouble(readLineValue);                
+                validacaoIngresso = false;
                 valorTotalIngresso = compraIngresso[atual] - precoIngresso;
             }
             catch(Exception)
@@ -329,16 +341,19 @@ namespace TrabalhoSistemaCinema
 
             while (valorTotalIngresso < 0)
             {
-                Console.WriteLine("\n\n");
-                
-                Console.WriteLine("\n");
-                Console.WriteLine("O valor total a ser pago é: R$" + precoIngresso);
+                Console.WriteLine("\n\n");                                                
                 validacaoIngresso = true;
+
                 while (validacaoIngresso == true)
+                {
                     try
                     {
+                        Console.WriteLine("O valor total a ser pago é: R$" + precoIngresso);
+                        Console.WriteLine("\n");
                         Console.WriteLine("Valor para Depositar o pagando: ");
-                        compraIngresso[atual] = Convert.ToDouble(Console.ReadLine());
+                        readLineValue = Console.ReadLine();
+                        Console.Clear();
+                        compraIngresso[atual] = Convert.ToDouble(readLineValue);
                         Console.WriteLine("\n");
                         validacaoIngresso = false;
                         valorTotalIngresso = compraIngresso[atual] - precoIngresso;
@@ -346,16 +361,16 @@ namespace TrabalhoSistemaCinema
                     catch (Exception)
                     {
                         Console.Clear();
-                        Console.WriteLine("Informe novamente!");
-
+                        Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico\nInforme Novamente");
+                        Console.WriteLine("\n");
                     }
-                valorTotalIngresso = compraIngresso[atual] - precoIngresso;
+                    valorTotalIngresso = compraIngresso[atual] - precoIngresso;
+                }
                 
 
             }
 
-            Console.WriteLine("\n");
-            Console.WriteLine("O valor total a ser pago é: R$" + precoIngresso);
+            Console.WriteLine("\n");            
             Console.WriteLine("O valor total de troco é: R$" + valorTotalIngresso);
             Console.WriteLine("\n");
             Console.Write("Digite algo para continuar: ");
