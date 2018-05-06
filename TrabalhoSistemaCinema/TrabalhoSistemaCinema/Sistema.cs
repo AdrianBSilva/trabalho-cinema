@@ -9,7 +9,8 @@ namespace TrabalhoSistemaCinema
     class Sistema
     {
         public EscolhaCliente _cliente = new EscolhaCliente();
-        public Filme _filme = new Filme();
+        public MenuFilme _filme = new MenuFilme();
+        
         public Alimentacao _alimentacao = new Alimentacao();
         public EscolhaFuncionario _funcionario = new EscolhaFuncionario();
         int menuEscolha = 0;
@@ -69,11 +70,11 @@ namespace TrabalhoSistemaCinema
                         break;
                     case 2:
                         Console.Clear();
-                        _filme.CadastroFilme();
+                        _filme.menuFilme();
                         break;
                     case 3:
                         Console.Clear();
-                        _alimentacao.CadastrarAlimentacao();
+                        _alimentacao.Menu();
                         break;
                     case 4:
                         Console.Clear();

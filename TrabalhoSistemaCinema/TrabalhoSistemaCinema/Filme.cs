@@ -8,54 +8,134 @@ namespace TrabalhoSistemaCinema
 {
     class Filme
     {
+
         string[] nomeFilme = new string[100];
+        int acesso = 0;
+        bool validarDuracao = true;
+        bool validarClassificacao = true;
         double[] duracaoFilme = new double[100];
         int[] classificaoFilme = new int[100];
         string[] generoFilme = new string[100];
+        bool validacaoSenha = true;
         int atual = 0;
         int senha = 951753;
+        string nome = "";
 
         public void CadastroFilme()
         {
             Console.WriteLine("Acesso Restrito");
-            Console.Write("Senha: ");
-            int acesso = Convert.ToInt32(Console.ReadLine());
+
+
+            validacaoSenha = true;
+            while (validacaoSenha == true)
+            {
+                try
+                {
+                    Console.Write("Senha: ");
+                    acesso = Convert.ToInt32(Console.ReadLine());
+                    validacaoSenha = false;
+                }
+                catch
+                {
+                    Console.Clear();
+                    Console.WriteLine("Senha incorreta tente novamente");
+                }
+            }
+            Console.Clear();
             while (acesso != senha)
             {
 
-                Console.Clear();
-                Console.WriteLine("Senha incorreta digite novamente");
-                Console.Write("Senha: ");
-                acesso = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    Console.Clear();
+                    Console.WriteLine("Senha incorreta tente novamente");
+                    Console.Write("Senha: ");
+                    acesso = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.Clear();
+                    Console.WriteLine("Senha incorreta tente novamente");
+                }
+
+
+
             }
 
             Console.Clear();
             Console.Write("Informe o nome do filme: ");
-            nomeFilme[atual] = Console.ReadLine();
-            Console.Write("Informe a duração do filme: ");
-            duracaoFilme[atual] = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Informe a classificação do filme: ");
-            classificaoFilme[atual] = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Informe o gênero do filme: ");
-            generoFilme[atual] = Console.ReadLine();
+            nome = Console.ReadLine();
 
+            validarDuracao = true;
+            while (validarDuracao == true)
+            {
+                try
+                {
+                    Console.Write("Informe a duração do filme: ");
+                    duracaoFilme[atual] = Convert.ToDouble(Console.ReadLine());
+                    validarDuracao = false;
+                }
+                catch
+                {
+                    Console.Clear();
+                    Console.WriteLine("Duração de filme inválida");
+                }
+            }
+
+            validarClassificacao = true;
+            while (validarClassificacao == true)
+            {
+                try
+                {
+                    Console.Write("Informe a classificação do filme: ");
+                    classificaoFilme[atual] = Convert.ToInt32(Console.ReadLine());
+                    validarClassificacao = false;
+                }
+                catch
+                {
+                    Console.Clear();
+                    Console.WriteLine("A classificação do filme é inválida");
+                }
+            }
+                
+
+
+                Console.Write("Informe o gênero do filme: ");
+                generoFilme[atual] = Console.ReadLine();
+                nomeFilme[atual] = nome;
+                atual++;
+
+
+
+            
         }
         public void ListarFilmes()
         {
             Console.Clear();
-            Console.WriteLine("Lista de barcos: ");
-            for (int i = 0; i < atual; i++)
+            Console.WriteLine("Lista de Filmes");
+            if (atual == 0)
             {
-                Console.WriteLine(
-                    String.Format(
-                    @"\nNome do filme: {0} 
+                Console.WriteLine("Nenhum Filme cadastrado!\nPressione qualquer tecla para continuar...");
+                Console.ReadKey();
+
+
+            }
+            else
+            {
+
+                for (int i = 0; i < atual; i++)
+                {
+                    Console.WriteLine(
+                        String.Format(
+                        @"\nNome do filme: {0} 
                         \nDuração do filme: {1} 
                         \nClassificação do filme: {2} 
                         \nGênero do filme: ",
-                    nomeFilme[i], duracaoFilme[i], classificaoFilme[i], generoFilme[i]
-                    )
-                    );
+                        nomeFilme[i], duracaoFilme[i], classificaoFilme[i], generoFilme[i]
+                        )
+                        );
 
+                }
             }
         }
 
@@ -110,18 +190,43 @@ namespace TrabalhoSistemaCinema
             }
         }
 
-        public  void EditarFilme()
+        public void EditarFilme()
         {
             Console.WriteLine("Acesso Restrito");
-            Console.Write("Senha: ");
-            int acesso = Convert.ToInt32(Console.ReadLine());
+
+
+            validacaoSenha = true;
+            while (validacaoSenha == true)
+            {
+                try
+                {
+                    Console.Write("Senha: ");
+                    acesso = Convert.ToInt32(Console.ReadLine());
+                    validacaoSenha = false;
+                }
+                catch
+                {
+                    Console.Clear();
+                    Console.WriteLine("Senha incorreta tente novamente");
+                }
+            }
+            Console.Clear();
             while (acesso != senha)
             {
 
-                Console.Clear();
-                Console.WriteLine("Senha incorreta digite novamente");
-                Console.Write("Senha: ");
-                acesso = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    Console.Clear();
+                    Console.WriteLine("Senha incorreta tente novamente");
+                    Console.Write("Senha: ");
+                    acesso = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.Clear();
+                    Console.WriteLine("Senha incorreta tente novamente");
+                }
+
             }
             Console.Clear();
             Console.WriteLine("Digite um nome do filme para pesquisa: ");
