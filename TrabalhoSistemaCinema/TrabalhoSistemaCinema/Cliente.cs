@@ -20,6 +20,8 @@ namespace TrabalhoSistemaCinema
         int[] _carteiraEstudante = new int[100];
         int[] _idadeClientes = new int[100];
         string[] _nomeClientes = new string[100];
+        bool pararRepeticao = true;
+        bool repeticaoTexto = false;
                       
         /// <summary>
         /// Cadastro de Clientes
@@ -129,7 +131,7 @@ namespace TrabalhoSistemaCinema
             {
                 Console.WriteLine("O maior nome é: {0}", nomesX);
             }
-        }
+        }        
 
         /// <summary>
         /// Busca de Clientes
@@ -137,13 +139,20 @@ namespace TrabalhoSistemaCinema
         public void BuscarCliente()
          {
             Console.Clear();
-                                        
+            string nomeBuscado = "";
+            if (pararRepeticao == true)
+            {
                 Console.WriteLine("Digite o nome para a busca(ou \"Sair\" para sair): ");
-                string nomeBuscado = Console.ReadLine().ToLower().Trim();
+                nomeBuscado = Console.ReadLine().ToLower().Trim();
+                pararRepeticao = false;
+
+            }                        
+                
 
                 while (nomeBuscado != "sair")
                 {
-                    bool achou = false;
+                    
+                     bool achou = false;
 
                     for (int i = 0; i < atual; i++)
                     {
@@ -151,28 +160,28 @@ namespace TrabalhoSistemaCinema
                         if (nomeBuscado == _nomeClientes[i])
                         {
                             achou = true;
-                            Console.Clear();
+                            
                             Console.WriteLine("Nome: " + _nomeClientes[i]);
                             Console.WriteLine("Idade: " + _idadeClientes[i]);
-                            Console.WriteLine("\n");
-
-                            Console.Write("Digite \"Sair\" para sair ");
-                            Console.Write("Digite o nome para a busca: ");
-                            nomeBuscado = Console.ReadLine().ToLower().Trim();
-
+                            Console.WriteLine("\n");                                                                                    
                         }
                     }
-
-                    if (!achou)
+                    if (repeticaoTexto == true)
                     {
-                        Console.WriteLine("\n");
-                        Console.WriteLine("Nome não encontrado!");
-                        Console.Write("Digite o nome para a busca(ou \"Sair\" para sair): ");
+                        Console.WriteLine("Digite o nome para a busca(ou \"Sair\" para sair): ");
                         nomeBuscado = Console.ReadLine().ToLower().Trim();
+                    }
+                    repeticaoTexto = true;
+                    Console.Clear();
+
+                if (!achou)
+                    {
                         Console.Clear();
+                                                                        
                     }
                                       
-                }                
+                } 
+                
             
          }
         /// <summary>

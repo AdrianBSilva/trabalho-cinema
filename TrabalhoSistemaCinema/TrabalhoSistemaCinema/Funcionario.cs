@@ -19,6 +19,8 @@ namespace TrabalhoSistemaCinema
         double[] salarioFuncionario = new double[100];
         string[] _nomeFuncionario = new string[100];
         int[] idadeFuncionario = new int[100];
+        int codigoFuncionario = 0;
+        int[] _codigoFuncionario = new int[100];
 
         /// <summary>
         /// Cadastro do funcionário
@@ -113,7 +115,13 @@ namespace TrabalhoSistemaCinema
                 Console.WriteLine("Informe a função: ");
                 funcaoFuncionario[atual] = Console.ReadLine();
                 _nomeFuncionario[atual] = nome;
+                codigoFuncionario++;
+                for (int i = 0; i < atual; i++)
+                {
+                    _codigoFuncionario[atual] = codigoFuncionario;
+                }
                 atual++;
+                Console.Clear();
             }
 
         }
@@ -137,24 +145,23 @@ namespace TrabalhoSistemaCinema
                     if (nomeBuscado == _nomeFuncionario[i])
                     {
                         achou = true;
-                        Console.Clear();
+                        
                         Console.WriteLine("Nome: " + _nomeFuncionario[i]);
                         Console.WriteLine("Idade: " + idadeFuncionario[i]);
-                        Console.WriteLine("\n");
-                        Console.Write("Digite \"Sair\" para sair ");
-                        Console.Write("Digite o nome para a busca: ");
-                        nomeBuscado = Console.ReadLine().ToLower().Trim();
+                        Console.WriteLine("Salário: " + salarioFuncionario[i]);
+                        Console.WriteLine("\n");                                                
                     }
                 }
+                Console.Write("Digite o nome para a busca(ou \"Sair\" para sair): ");
+                nomeBuscado = Console.ReadLine().ToLower().Trim();
+                Console.Clear();
 
                 if (!achou)
                 {
-                    Console.WriteLine("\n");
-                    Console.WriteLine("Nome não encontrado!");
+                    Console.Clear();
                 }
 
-                Console.Write("Digite o nome para a busca(ou \"Sair\" para sair): ");
-                nomeBuscado = Console.ReadLine().ToLower().Trim();
+                
             }
         }
 
@@ -231,8 +238,8 @@ namespace TrabalhoSistemaCinema
             Console.WriteLine("------------------------");
             // Console.WriteLine("O maior nome é: " + LocalizarMaiorNome());
             ExibirMaioresNomes();
-            Console.WriteLine("\nDigite qualquer tecla para sair: ");
-            string retornar = Console.ReadLine().Trim().ToLower();
+            Console.WriteLine("\nPressione qualquer tecla para sair: ");
+            Console.ReadKey();
         }
 
         /// <summary>
@@ -241,14 +248,14 @@ namespace TrabalhoSistemaCinema
         public void AltualizarFuncionario()
         {
             Console.Clear();
-            Console.WriteLine("Digite o nome do funcionário para a alteração: ");
-            string nomePesquisado = Console.ReadLine().ToLower().Trim();
+            Console.Write("Digite o codigo do funcionário: ");
+            codigoFuncionario = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
             int posicao = -1;
 
             for (int i = 0; i < atual; i++)
             {
-                if (nomePesquisado == _nomeFuncionario[i].ToLower())
+                if (codigoFuncionario != null)
                 {
                     posicao = i;
                 }
@@ -258,14 +265,16 @@ namespace TrabalhoSistemaCinema
                 Console.Write("Alterar Nome do Funcionário: ");
                 _nomeFuncionario[posicao] = Console.ReadLine().ToLower().Trim();
                 validacaoIdadeFuncionario = true;
+                Console.Clear();
 
                 while (validacaoIdadeFuncionario == true)
                 {
                     try
                     {
-                        Console.WriteLine("Alterar Idade do Funcionário: ");
+                        Console.Write("Alterar Idade do Funcionário: ");
                         idadeFuncionario[posicao] = Convert.ToInt32(Console.ReadLine());
                         validacaoIdadeFuncionario = false;
+                        Console.Clear();
                     }
                     catch (Exception)
                     {
@@ -282,6 +291,7 @@ namespace TrabalhoSistemaCinema
                         Console.Write("Alterar Salário do funcionário: ");
                         salarioFuncionario[posicao] = Convert.ToDouble(Console.ReadLine());
                         validacaoSalarioFuncionario = false;
+                        Console.Clear();
                     }
 
                     catch (Exception)
@@ -295,13 +305,16 @@ namespace TrabalhoSistemaCinema
             {
                 Console.WriteLine("Registro não encontrado");
             }
+            Console.Write("Alterar função do funcionário: ");
+            funcaoFuncionario[posicao] = Console.ReadLine().ToLower().Trim();
 
             for (int i = 0; i < atual; i++)
             {
-                Console.WriteLine("Funcionário: {0}\nIdade: {1}\nSalário: {2}",
+                Console.WriteLine("Funcionário: {0}\nIdade: {1}\nSalário: {2}\nFunção: {3}",
                     _nomeFuncionario,
                     idadeFuncionario,
-                    salarioFuncionario);
+                    salarioFuncionario,
+                    funcaoFuncionario);
             }
         }
     }
