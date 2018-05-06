@@ -48,8 +48,8 @@ namespace TrabalhoSistemaCinema
             {
                 Console.Clear();
 
-                // Recebe o nome
-                Console.Write("Informe seu nome" + sairTexto);
+                // Recebe o nome 
+                Console.WriteLine("Informe seu nome" + sairTexto);
                 string nome = Console.ReadLine();
 
                 // Sai do programa se for "sair"
@@ -104,8 +104,10 @@ namespace TrabalhoSistemaCinema
             int indiceNomes = 0;
             string[] nomes = new string[atual];
 
+            
             for (int i = 0; i < atual; i++)
             {
+                
                 // adiciona repitidos
                 if (nomeClientes[i].Length == maiorNome.Length)
                 {
@@ -189,8 +191,7 @@ namespace TrabalhoSistemaCinema
                 
                       
 
-                }
-                
+                }                
             
          }
         //Locazia o nome apartir de nomeClientes
@@ -213,30 +214,34 @@ namespace TrabalhoSistemaCinema
         //Faz a listagem dos clientes
         public void ListarCliente()
         {
-            
-            Console.WriteLine("Lista de Clientes: ");
-
-            Console.WriteLine("-------------------------");
-
-            for (int i = 0; i < atual; i++)
+            if (atual == 0)
             {
-                Console.WriteLine(String.Format("Código: {0}\nNome: {1}\nIdade: {2}\n",
-                    i + 1, 
-                    nomeClientes[i], 
-                    idadeClientes[i])
-                    );
+                Console.WriteLine("Nenhum cliente cadastrado! Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+                
                 
             }
+            else
+            {
+                Console.WriteLine("Lista de Clientes: ");
 
-            Console.WriteLine("------------------------");
-            ExibirMaioresNomes();
-            Console.WriteLine("\nDigite qualquer tecla para sair: ");
-                string retornar = Console.ReadLine().Trim().ToLower();
+                Console.WriteLine("-------------------------");
+
+                for (int i = 0; i < atual; i++)
+                {
+                    Console.WriteLine(String.Format("Código: {0}\nNome: {1}\nIdade: {2}\n",
+                        i + 1, 
+                        nomeClientes[i], 
+                        idadeClientes[i])
+                        );
                 
-                
+                }
 
-
-            
+                Console.WriteLine("------------------------");
+                ExibirMaioresNomes();
+                Console.WriteLine("\nPressione qualquer tecla para continuar...");
+                Console.ReadKey();
+            }                                            
         }
 
         //Compra dos Ingressos
@@ -373,10 +378,10 @@ namespace TrabalhoSistemaCinema
             Console.WriteLine("\n");            
             Console.WriteLine("O valor total de troco é: R$" + valorTotalIngresso);
             Console.WriteLine("\n");
-            Console.Write("Digite algo para continuar: ");
-            string retornar = Console.ReadLine();
+            Console.Write("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
             precoIngresso = 12;
-            atual++;
+            
         }
 
 
