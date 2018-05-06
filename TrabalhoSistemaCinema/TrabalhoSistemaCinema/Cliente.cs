@@ -254,7 +254,9 @@ namespace TrabalhoSistemaCinema
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico");
+                    Console.Clear();
+                    Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico\nInforme Novamente");
+
 
                 }
             }
@@ -310,7 +312,8 @@ namespace TrabalhoSistemaCinema
             try
             {
                 Console.WriteLine("Informe o valor depositado: ");
-                compraIngresso[atual] = Convert.ToDouble(Console.ReadLine());
+                    readLineValue = Console.ReadLine();
+                compraIngresso[atual] = Convert.ToDouble(readLineValue);
                 Console.WriteLine("\n");
                     validacaoIngresso = false;
                 valorTotalIngresso = compraIngresso[atual] - precoIngresso;
@@ -318,7 +321,9 @@ namespace TrabalhoSistemaCinema
             catch(Exception)
             {
                     Console.Clear();
-                Console.WriteLine("Informe novamente!");
+                    Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico\nInforme Novamente");
+                    Console.WriteLine("\n");
+                    
 
             }
 
@@ -332,7 +337,7 @@ namespace TrabalhoSistemaCinema
                 while (validacaoIngresso == true)
                     try
                     {
-                        Console.WriteLine("Informe o valor depositado: ");
+                        Console.WriteLine("Valor para Depositar o pagando: ");
                         compraIngresso[atual] = Convert.ToDouble(Console.ReadLine());
                         Console.WriteLine("\n");
                         validacaoIngresso = false;

@@ -61,7 +61,7 @@ namespace TrabalhoSistemaCinema
                 catch (Exception)
                 {
                     Console.Clear();
-                    Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico");
+                    Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico\nInforme Novamente");
                 }
             }
             Console.Clear();
@@ -101,7 +101,7 @@ namespace TrabalhoSistemaCinema
                     catch (Exception)
                     {
                         Console.Clear();
-                        Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico");
+                        Console.WriteLine("O valor \"" + readLineValue + "\" não é numérico\nInforme Novamente");
                     }
                 }
                 Console.Clear();
