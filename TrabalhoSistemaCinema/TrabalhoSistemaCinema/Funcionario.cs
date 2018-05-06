@@ -64,7 +64,7 @@ namespace TrabalhoSistemaCinema
             while (nome != "sair")
             {
                 Console.WriteLine("Informe o nome(ou \"Sair\" para sair): ");
-                string nome = Console.ReadLine().ToLower().Trim();
+                 nome = Console.ReadLine().ToLower().Trim();
 
                 if (nome == "sair")
                 {
