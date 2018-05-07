@@ -8,16 +8,24 @@ namespace TrabalhoSistemaCinema
 {
     class Alimentacao
     {
+        bool validarDinheiro = true;
         double valorTotal = 0;
         string pedido = "";
         bool validcaoEscolha = true;
         bool validacaoConfirmacao = true;
         int menuEscolha = 0;
-
+        double dinheiro = 0;
 
         public void Menu()
         {
-            Console.WriteLine(@"                   ====================MENU====================     
+            validcaoEscolha = true;
+            while (validcaoEscolha == true)
+            {
+                try
+                {
+                    while (menuEscolha < 9)
+                    {
+                        Console.WriteLine(@"                   ====================MENU====================     
   ________________________________________
   |1-Pipoca Grande                 R$15,00|
   |2-Pipoca Média                  R$10,00|
@@ -33,99 +41,144 @@ namespace TrabalhoSistemaCinema
   |                                                                        |
   |9-Junior: Pipoca Pequena + Refrigerante lata + Balas fini        R$15,00|
   |________________________________________________________________________|
-  |10-Sair                                                                 |
+  |Digite qualque outro numero para SAIR                                   |
   |________________________________________________________________________|");
 
-            
-            validcaoEscolha = true;
-            while (validcaoEscolha == true)
-            {
-                try
-                {
-                    Console.Write("Pedido do cliente: ");
-                    menuEscolha = Convert.ToInt32(Console.ReadLine());
-                    validcaoEscolha = false;
+
+                        Console.Write("Pedido do cliente: ");
+                        menuEscolha = Convert.ToInt32(Console.ReadLine());
+                        Console.Clear();
+                        validcaoEscolha = false;
+
+                        Console.Clear();
+
+                        switch (menuEscolha)
+                        {
+                            case 1:
+                                valorTotal = valorTotal + 15.00;
+                                pedido = pedido + "," + " Pipoca Grande";
+                                break;
+
+                            case 2:
+                                valorTotal = valorTotal + 10.00;
+                                pedido = pedido + "," + " Pipoca Média";
+                                break;
+
+
+                            case 3:
+                                valorTotal = valorTotal + 8.00;
+                                pedido = pedido + "," + " Pipoca Pequena";
+                                break;
+
+                            case 4:
+                                valorTotal = valorTotal + 5.00;
+                                pedido = pedido + "," + "Refrigerante lata";
+                                break;
+
+                            case 5:
+                                valorTotal = valorTotal + 7.00;
+                                pedido = pedido + "," + "Refrigerante 600ml";
+                                break;
+
+                            case 6:
+                                valorTotal = valorTotal + 5.00;
+                                pedido = pedido + "," + "Balas fini";
+                                break;
+
+                            case 7:
+                                valorTotal = valorTotal + 30.00;
+                                pedido = pedido + "," + "Combo Família";
+                                break;
+
+                            case 8:
+                                valorTotal = valorTotal + 23.00;
+                                pedido = pedido + "," + "Combo Popular";
+                                break;
+
+                            case 9:
+                                valorTotal = valorTotal + 15.00;
+                                pedido = pedido + "," + "Combo Junior";
+                                break;
+
+                        }
+
+
+                    }
                 }
 
                 catch (Exception)
                 {
                     Console.Clear();
                     Menu();
-                   
-                    
+
+
 
                 }
             }
-            while (menuEscolha < 9)
-            {
-                Console.Clear();
-                Menu();
-                Console.Write("Pedido do cliente: ");
-                menuEscolha = Convert.ToInt32(Console.ReadLine());
-                Console.Clear();
-                validcaoEscolha = false;
-
-                if (menuEscolha == 1)
-                {
-                    valorTotal = valorTotal + 15.00;
-                    pedido = pedido + "," + " Pipoca Grande";
-
-                }
-                else if (menuEscolha == 2)
-                {
-                    valorTotal = valorTotal + 10.00;
-                    pedido = pedido + "," + " Pipoca Média";
-                }
-                else if (menuEscolha == 3)
-                {
-                    valorTotal = valorTotal + 8.00;
-                    pedido = pedido + "," + " Pipoca Pequena";
-                }
-                else if (menuEscolha == 4)
-                {
-                    valorTotal = valorTotal + 5.00;
-                    pedido = pedido + "," + "Refrigerante lata";
-                }
-                else if (menuEscolha == 5)
-                {
-                    valorTotal = valorTotal + 7.00;
-                    pedido = pedido + "," + "Refrigerante 600ml";
-                }
-                else if (menuEscolha == 6)
-                {
-                    valorTotal = valorTotal + 5.00;
-                    pedido = pedido + "," + "Balas fini";
-                }
-                else if (menuEscolha == 7)
-                {
-                    valorTotal = valorTotal + 30.00;
-                    pedido = pedido + "," + "Combo Família";
-                }
-                else if (menuEscolha == 8)
-                {
-                    valorTotal = valorTotal + 23.00;
-                    pedido = pedido + "," + "Combo Popular";
-                }
-                else if (menuEscolha == 9)
-                {
-                    valorTotal = valorTotal + 15.00;
-                    pedido = pedido + "," + "Combo Junior";
-                }
-                
-
-            }
             
-
-            
+        
 
             Console.WriteLine("Seu pedido foi : " + pedido);
             Console.WriteLine("Valor total: R$" + valorTotal);
             
-        }
- 
             
-
-
+             validarDinheiro = true;
+            while (validarDinheiro == true)
+            {
+                try
+                {
+                    Console.Write("Informe o valor depositado:");
+                    dinheiro = Convert.ToDouble(Console.ReadLine());
+                    validarDinheiro = false;
+                }
+                catch
+                {
+                    Console.Clear();
+                    Console.WriteLine("Erro! Informe  valor novamente");
+                }
+            }
+            if (dinheiro > valorTotal)
+            {
+                Console.WriteLine("Troco: " + (dinheiro - valorTotal));
+            }
+            else if (dinheiro < valorTotal)
+            {
+                Console.WriteLine("Dinheiro insuficiente\n");
+                while ((validarDinheiro == true) || (dinheiro < 0))
+                {
+                    try
+                    {
+                        Console.Write("Informe o valor novamnete:");
+                        dinheiro = Convert.ToDouble(Console.ReadLine());
+                        validarDinheiro = false;
+                    }
+                    catch
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Erro! Informe  valor novamente");
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Obrigado :)");
+            }
+        Console.Clear();
         }
+           
+
+       
+           
+
+
+
+
     }
+
+
+
+
+}
+
+
 
