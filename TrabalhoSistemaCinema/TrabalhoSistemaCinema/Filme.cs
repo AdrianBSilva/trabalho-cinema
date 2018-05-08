@@ -119,16 +119,19 @@ namespace TrabalhoSistemaCinema
             {
                 for (int i = 0; i < atual; i++)
                 {
+                    Console.WriteLien("Nome do filme: {0}")
                     Console.WriteLine(
                         String.Format(
-                        @"\nNome do filme: {0} 
-                        \nDuração do filme: {1} 
-                        \nClassificação do filme: {2} 
-                        \nGênero do filme: ",
+                        @"Nome do filme: {0} 
+                        Duração do filme: {1} 
+                        Classificação do filme: {2} 
+                        Gênero do filme: {3}",
                         nomeFilme[i], duracaoFilme[i], classificaoFilme[i], generoFilme[i]
                         )
-                        );
-                }                
+                        );                    
+                }
+                Console.WriteLine("Pressione alguma tecla para continuar...");
+                Console.ReadKey();
             }            
         }
 
@@ -153,6 +156,8 @@ namespace TrabalhoSistemaCinema
                     )
                     );
                     achou = true;
+                    Console.WriteLine("Pressione alguma tecla para continuar...");
+                    Console.ReadKey();
                     break;
 
                 }
