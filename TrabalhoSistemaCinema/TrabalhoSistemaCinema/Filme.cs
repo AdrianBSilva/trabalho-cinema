@@ -176,7 +176,6 @@ namespace TrabalhoSistemaCinema
                     );
                     achou = true;
                     break;
-
                 }
 
                 if (!achou)
@@ -184,15 +183,12 @@ namespace TrabalhoSistemaCinema
                     Console.WriteLine("\n");
                     Console.WriteLine("Filme não encontrado!");
                 }
-
             }
         }
 
         public void EditarFilme()
         {
             Console.WriteLine("Acesso Restrito");
-
-
             validacaoSenha = true;
 
             while (validacaoSenha == true)
@@ -213,7 +209,6 @@ namespace TrabalhoSistemaCinema
 
             while (acesso != senha)
             {
-
                 try
                 {
                     Console.Clear();

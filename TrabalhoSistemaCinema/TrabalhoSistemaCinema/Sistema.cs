@@ -46,7 +46,6 @@ namespace TrabalhoSistemaCinema
             {
                 try
                 {
-
                     Menu();
                     Console.Write("Informe sua opção: ");
                     menuEscolha = Convert.ToInt32(Console.ReadLine());

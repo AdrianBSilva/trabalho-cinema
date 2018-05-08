@@ -281,7 +281,6 @@ namespace TrabalhoSistemaCinema
                         Console.Clear();
                         Console.WriteLine("Informe a idade novamente!");
                     }
-
                 }
                 validacaoSalarioFuncionario = true;
                 while (validacaoSalarioFuncionario == true)
@@ -293,7 +292,6 @@ namespace TrabalhoSistemaCinema
                         validacaoSalarioFuncionario = false;
                         Console.Clear();
                     }
-
                     catch (Exception)
                     {
                         Console.Clear();
