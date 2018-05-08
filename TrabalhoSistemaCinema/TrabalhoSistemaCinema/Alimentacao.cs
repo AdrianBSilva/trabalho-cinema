@@ -14,6 +14,7 @@
             bool _validcaoEscolha = true;        
             int _menuEscolha = 0;
             double _dinheiro = 0;
+            int quantidade = 0;
 
             public void Menu()
             {
@@ -42,7 +43,8 @@
       |                                                                        |
       |9-Junior: Pipoca Pequena + Refrigerante lata + Balas fini        R$15,00|
       |________________________________________________________________________|
-      |Digite qualque outro numero para SAIR                                   |
+      |15-Para exibir o total                                                  |
+      |20-Para voltar para o menu principal                                    |
       |________________________________________________________________________|");
 
                             Console.Write("Pedido do cliente: ");
@@ -62,54 +64,63 @@
                                     case 1:
                                         _valorTotal = _valorTotal + 15.00;
                                         _pedido = _pedido + "," + " Pipoca Grande";
+                                        quantidade++;
                                         Menu();
                                         break;
 
                                     case 2:
                                         _valorTotal = _valorTotal + 10.00;
                                         _pedido = _pedido + "," + " Pipoca Média";
+                                        quantidade++;
                                         Menu();
                                         break;
 
                                     case 3:
                                         _valorTotal = _valorTotal + 8.00;
                                         _pedido = _pedido + "," + " Pipoca Pequena";
+                                        quantidade++;
                                         Menu();
                                         break;
 
                                     case 4:
                                         _valorTotal = _valorTotal + 5.00;
                                         _pedido = _pedido + "," + "Refrigerante lata";
+                                        quantidade++;
                                         Menu();
                                         break;
 
                                     case 5:
                                         _valorTotal = _valorTotal + 7.00;
                                         _pedido = _pedido + "," + "Refrigerante 600ml";
+                                        quantidade++;
                                         Menu();
                                         break;
 
                                     case 6:
                                         _valorTotal = _valorTotal + 5.00;
                                         _pedido = _pedido + "," + "Balas fini";
+                                        quantidade++;
                                         Menu();
                                         break;
 
                                     case 7:
                                         _valorTotal = _valorTotal + 30.00;
                                         _pedido = _pedido + "," + "Combo Família";
+                                        quantidade++;
                                         Menu();
                                         break;
 
                                     case 8:
                                         _valorTotal = _valorTotal + 23.00;
                                         _pedido = _pedido + "," + "Combo Popular";
+                                        quantidade++;
                                         Menu();
                                         break;
 
                                     case 9:
                                         _valorTotal = _valorTotal + 15.00;
                                         _pedido = _pedido + "," + "Combo Junior";
+                                        quantidade++;
                                         Menu();
                                         break;
                                     case 15:
@@ -117,6 +128,7 @@
                                         break;
                                     
 
+                                
                                 }
                             }
 
@@ -132,10 +144,12 @@
             }
         
                 public void Pedido()
-                {               
+                {
+                    double media = _valorTotal / quantidade;
                     Console.WriteLine("Seu pedido foi : " + _pedido);
                     Console.WriteLine("\n");
                     Console.WriteLine("Valor total a ser pago: R$" + _valorTotal);
+                    Console.WriteLine("Media dos pedidos: " + media);
                     _validarDinheiro = true;
 
                     while (_validarDinheiro == true)

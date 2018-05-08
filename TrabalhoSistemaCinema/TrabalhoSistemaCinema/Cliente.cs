@@ -38,7 +38,7 @@ namespace TrabalhoSistemaCinema
                 Console.Clear();
 
                 // Recebe o nome 
-                Console.WriteLine("Informe seu nome" + sairTexto);
+                Console.Write("Informe seu nome" + sairTexto);
                 string nome = Console.ReadLine();
 
                 // Sai do programa se for "sair"
