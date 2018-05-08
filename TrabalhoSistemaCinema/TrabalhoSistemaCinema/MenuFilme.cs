@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace TrabalhoSistemaCinema
 {
     class MenuFilme
-    {
-
+    {    
         Filme filme = new Filme();
         bool validacaoMenu = true;
         int menuFilmeEscolha = 0;
+
         public void menuFilme()
         {
             GerarMenuFilme();
@@ -26,7 +26,7 @@ namespace TrabalhoSistemaCinema
 2 - Listar Filmes
 3 - Buscar Filme
 4 - Editar filme
-5 - voltar"
+5 - Voltar"
 );
         }
 
@@ -34,11 +34,13 @@ namespace TrabalhoSistemaCinema
         {
             Menu();
             validacaoMenu = true;
+
             while (validacaoMenu == true)
             {
                 try
                 {
                     Menu();
+                    Console.Write("Informe sua opção: ");                    
                     menuFilmeEscolha = Convert.ToInt32(Console.ReadLine());
                     validacaoMenu = false;
                 }
@@ -49,6 +51,7 @@ namespace TrabalhoSistemaCinema
 
             }
             Console.Clear();
+
             while (menuFilmeEscolha != 5)
             {
                 switch (menuFilmeEscolha)
@@ -67,6 +70,27 @@ namespace TrabalhoSistemaCinema
                         break;
                    
                 }
+
+                Menu();
+                validacaoMenu = true;
+
+                while (validacaoMenu == true)
+                {
+                    try
+                    {
+                        Menu();
+                        Console.Write("Informe sua opção: ");
+                        menuFilmeEscolha = Convert.ToInt32(Console.ReadLine());
+                        validacaoMenu = false;
+                    }
+                    catch (Exception)
+                    {
+                        Console.Clear();
+
+                    }
+                }
+                Console.Clear();
+
             }
         }
 

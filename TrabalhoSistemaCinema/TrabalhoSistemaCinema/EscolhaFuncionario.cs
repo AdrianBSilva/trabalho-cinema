@@ -45,8 +45,8 @@ namespace TrabalhoSistemaCinema
             {
                 try
                 {
-
                     Menu();
+                    Console.Write("Informe sua opção: ");
                     _readLineValue = Console.ReadLine();
                     _menuEscolha = Convert.ToInt32(_readLineValue);
 
@@ -55,7 +55,7 @@ namespace TrabalhoSistemaCinema
                 catch (Exception)
                 {
                     Console.Clear();
-                    Console.WriteLine("O valor \"" + _readLineValue + "\" não é numérico");
+                    Console.WriteLine("O valor \"" + _readLineValue + "\" não é válido");
                 }
                 Console.Clear();
 
@@ -90,6 +90,7 @@ namespace TrabalhoSistemaCinema
                         {
 
                             Menu();
+                            Console.Write("Informe sua opção: ");
                             _readLineValue = Console.ReadLine();
                             _menuEscolha = Convert.ToInt32(_readLineValue);
                             _validacaoMenu = false;
@@ -97,7 +98,7 @@ namespace TrabalhoSistemaCinema
                         catch (Exception)
                         {
                             Console.Clear();
-                            Console.WriteLine("O valor \"" + _readLineValue + "\" não é numérico");
+                            Console.WriteLine("O valor \"" + _readLineValue + "\" não é válido");
 
                         }
                         Console.Clear();

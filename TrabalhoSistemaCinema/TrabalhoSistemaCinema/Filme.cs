@@ -57,9 +57,7 @@ namespace TrabalhoSistemaCinema
                     Console.Clear();
                     Console.WriteLine("Senha incorreta tente novamente");
                 }
-
-
-
+            
             }
 
             Console.Clear();
@@ -67,6 +65,7 @@ namespace TrabalhoSistemaCinema
             nome = Console.ReadLine();
 
             validarDuracao = true;
+
             while (validarDuracao == true)
             {
                 try
@@ -83,6 +82,7 @@ namespace TrabalhoSistemaCinema
             }
 
             validarClassificacao = true;
+
             while (validarClassificacao == true)
             {
                 try
@@ -97,32 +97,26 @@ namespace TrabalhoSistemaCinema
                     Console.WriteLine("A classificação do filme é inválida");
                 }
             }
-                
-
-
+            
                 Console.Write("Informe o gênero do filme: ");
                 generoFilme[atual] = Console.ReadLine();
                 nomeFilme[atual] = nome;
                 atual++;
-
-
-
             
         }
         public void ListarFilmes()
         {
             Console.Clear();
             Console.WriteLine("Lista de Filmes");
+
             if (atual == 0)
             {
                 Console.WriteLine("Nenhum Filme cadastrado!\nPressione qualquer tecla para continuar...");
                 Console.ReadKey();
 
-
             }
             else
             {
-
                 for (int i = 0; i < atual; i++)
                 {
                     Console.WriteLine(
@@ -134,16 +128,17 @@ namespace TrabalhoSistemaCinema
                         nomeFilme[i], duracaoFilme[i], classificaoFilme[i], generoFilme[i]
                         )
                         );
-
-                }
-            }
+                }                
+            }            
         }
 
         public void BuscarFilme()
         {
             Console.Write("Buscar filme por Nome ou Gênero: ");
             string nomeBuscado = Console.ReadLine().ToLower().Trim();
+            Console.Clear();
             bool achou = false;
+
             for (int i = 0; i < atual; i++)
             {
                 if (nomeBuscado == nomeFilme[i])
@@ -161,11 +156,13 @@ namespace TrabalhoSistemaCinema
                     break;
 
                 }
+
                 if (!achou)
                 {
                     Console.WriteLine("\n");
                     Console.WriteLine("Filme não encontrado!");
                 }
+
                 if (nomeBuscado == generoFilme[i])
                 {
                     Console.WriteLine(
@@ -181,6 +178,7 @@ namespace TrabalhoSistemaCinema
                     break;
 
                 }
+
                 if (!achou)
                 {
                     Console.WriteLine("\n");
@@ -196,6 +194,7 @@ namespace TrabalhoSistemaCinema
 
 
             validacaoSenha = true;
+
             while (validacaoSenha == true)
             {
                 try
@@ -211,6 +210,7 @@ namespace TrabalhoSistemaCinema
                 }
             }
             Console.Clear();
+
             while (acesso != senha)
             {
 
@@ -233,6 +233,7 @@ namespace TrabalhoSistemaCinema
             string nomePesquisado = Console.ReadLine().ToLower().Trim();
             Console.Clear();
             int posicao = -1;
+
             for (int i = 0; i < atual; i++)
             {
                 if (nomePesquisado == nomeFilme[i])
@@ -240,6 +241,7 @@ namespace TrabalhoSistemaCinema
                     posicao = i;
                 }
             }
+
             if (posicao != -1)
             {
                 Console.Write("Informe o nome do filme: ");
