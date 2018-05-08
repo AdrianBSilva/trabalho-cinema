@@ -140,48 +140,29 @@ namespace TrabalhoSistemaCinema
             {
                 if (nomeBuscado == nomeFilme[i])
                 {
-                    Console.WriteLine(
-                    String.Format(
-                    @"\nNome do filme: {0} 
-                        \nDuração do filme: {1} 
-                        \nClassificação do filme: {2} 
-                        \nGênero do filme: ",
-                    nomeFilme[i], duracaoFilme[i], classificaoFilme[i], generoFilme[i]
-                    )
-                    );
                     achou = true;
-                    Console.WriteLine("Pressione alguma tecla para continuar...");
-                    Console.ReadKey();
-                    break;
-
+                    Console.WriteLine("Nome do filme: {0}\nDuração do Filme: {1}\nClassificação do filme: {2}\nGênero do filme: {3}",
+                    nomeFilme[i], duracaoFilme[i], classificaoFilme[i], generoFilme[i]);
+                    Console.WriteLine("\n");                                                            
+                                        
                 }
-
-                if (!achou)
-                {
-                    Console.WriteLine("\n");
-                    Console.WriteLine("Filme não encontrado!");
-                }
+               
 
                 if (nomeBuscado == generoFilme[i])
                 {
-                    Console.WriteLine(
-                    String.Format(
-                    @"\nNome do filme: {0} 
-                        \nDuração do filme: {1} 
-                        \nClassificação do filme: {2} 
-                        \nGênero do filme: ",
-                    nomeFilme[i], duracaoFilme[i], classificaoFilme[i], generoFilme[i]
-                    )
-                    );
-                    achou = true;
-                    break;
+                    Console.WriteLine("Nome do filme: {0}\nDuração do Filme: {1}\nClassificação do filme: {2}\nGênero do filme: {3}",
+                    nomeFilme[i], duracaoFilme[i], classificaoFilme[i], generoFilme[i]);
+                    Console.WriteLine("\n");                    
+                    achou = true;                    
                 }
-
-                if (!achou)
-                {
-                    Console.WriteLine("\n");
-                    Console.WriteLine("Filme não encontrado!");
-                }
+                
+            }
+            Console.WriteLine("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
+            if (!achou)
+            {
+                Console.WriteLine("\n");
+                Console.WriteLine("Gênero não encontrado!");
             }
         }
 
@@ -223,7 +204,7 @@ namespace TrabalhoSistemaCinema
 
             }
             Console.Clear();
-            Console.WriteLine("Digite um nome do filme para pesquisa: ");
+            Console.Write("Digite um nome do filme para pesquisa: ");
             string nomePesquisado = Console.ReadLine().ToLower().Trim();
             Console.Clear();
             int posicao = -1;
